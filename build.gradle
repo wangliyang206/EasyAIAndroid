@@ -1,0 +1,37 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+buildscript {
+    repositories {
+        google()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.4'
+        //Gradle Android Maven plugin
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        //Gradle Bintray Plugin
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }                        // PermissionsDispatcher 权限注解
+        mavenCentral()
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases" }                 // 阿里云热修复
+        maven { url = uri("https://maven.pkg.github.com/GCX-HCI/tray") }                            // Tray - SharedPreferences
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// 指定编译的编码
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    classifier('javadoc')
+}

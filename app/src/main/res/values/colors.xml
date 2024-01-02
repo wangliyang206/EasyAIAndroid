@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ##########################################通用部分########################################## -->
+    <!--  应用的主要色调,actionBar默认使用该颜色,Toolbar导航栏的底色 -->
+    <color name="colorPrimary">#006d4a</color>
+    <!-- 应用的主要暗色调,statusBarColor默认使用该颜色 -->
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
+    <!-- CheckBox,RadioButton,SwitchCompat等一般控件的选中效果默认采用该颜色 -->
+    <color name="colorAccent">@color/colorPrimary</color>
+
+    <!-- 状态栏颜色 -->
+    <color name="colorStatusBar">#FFFFFF</color>
+
+    <!-- 背景颜色 -->
+    <color name="layout_bg_color">#F2F9FB</color>
+    <color name="fragment_bg_color">#F8F6F9</color>
+    <color name="frame_bg_color">#F5F5F5</color>
+
+    <!-- 标题颜色 -->
+    <color name="comm_title_color">#000000</color>
+
+    <!-- 透明度 -->
+    <color name="translucent_20">#20000000</color>
+    <color name="translucent_50">#50000000</color>
+    <color name="translucent_60">#60000000</color>
+    <color name="common_image_focus_bak">#a6a6a6</color>                                            <!-- 图片获得焦点颜色 -->
+    <color name="common_image_normal_bak">#00ffffff</color>                                         <!-- 图片正常颜色 -->
+
+    <!--二维码背景颜色-->
+    <color name="qr_code_bg_white40">#40FFFFFF</color>
+
+    <!--TextView 字体颜色-->
+    <color name="common_text_color">#333333</color>
+    <color name="common_text_tips_color">#888888</color>
+    <color name="common_text_hint_color">#aaaaaa</color>
+    <color name="common_text_red_color">#F34B56</color>
+    <color name="common_text_amount_color">#FB6409</color>
+    <!--EditView 字体颜色-->
+    <color name="common_edit_color">#646464</color>
+    <color name="common_edit_hint_color">#999999</color>
+
+    <!-- 按钮禁止颜色 -->
+    <color name="button_not_enabled">#aaaaaa</color>
+    <!-- 按钮点击颜色 -->
+    <color name="button_press_bak">#8ec31e</color>
+    <!-- 按钮正常颜色 -->
+    <color name="button_normal_bak">#46C788</color>
+
+    <!-- 登录分隔线 -->
+    <color name="login_line_color">#888888</color>
+    <color name="login_txt_color">#0F77F2</color>
+
+    <!-- 分割线 -->
+    <color name="line_input_color">#d0d0d0</color>                                                  <!-- 分隔线(填写信息) -->
+    <color name="line_frame_color">#e0e0e0</color>
+
+    <!-- Tab颜色 -->
+    <color name="tab_bg_color">#ffffff</color>
+    <color name="tab_line_above">#e2e2e2</color>
+    <color name="tab_text_normal">#888888</color>
+    <color name="tab_text_press">#46C788</color>
+
+    <!-- 首页搜索背景颜色 -->
+    <color name="home_search_bg_color">#F9F9F9</color>
+    <color name="home_search_text_color">#929292</color>
+    <!-- 首页导航文字颜色 -->
+    <color name="home_nav_text_color">#666666</color>
+
+    <!-- 顶部背景 -->
+    <color name="colorLightBlue">#76DB8F</color>
+    <color name="colorDeepBlue">#17B381</color>
+    <!-- #######################################选择城市####################################### -->
+    <color name="cp_alpha_gray">#CC646464</color>
+    <color name="cp_gray_deep">#5c5c5c</color>
+    <color name="cp_gray">#8c8c8c</color>
+    <color name="cp_colorAccent">#F3F3F3</color>
+    <color name="cp_content_bg">@color/cp_colorAccent</color>
+    <color name="cp_divider">#E5E5E5</color>
+</resources>

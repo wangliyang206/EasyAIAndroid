@@ -1,0 +1,46 @@
+<resources>
+    <!--系统-->
+    <string name="app_name">贸易端</string>
+    <string name="app_name_debug">Test贸易端</string>
+
+    <!--阿里云Sophix热修复-->
+    <string name="alicloud_app_id">333854933-1</string>
+    <string name="alicloud_app_id_debug">333854938-1</string>
+
+    <string name="alicloud_app_secret">ff4ce3fb8cd243d69482812bc6e89a16</string>
+    <string name="alicloud_app_secret_debug">e444c2451a264cb38e7205a78365f487</string>
+
+    <string name="alicloud_app_rsa">MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqI7By17iKmlYsa23+JAtlRQx2DMXw7dXYCtXqm0CL5Pm4BTJshz8WGbfGV27WwCCO0SWvCKTNWhMuJuZEBs1tv9971F5tNTL6fGly8fTuzi7sWL81oULd53cfDGPRZdFjkLyrKZf93CuaL7U5KvWMnAeV8JyYA6p7upDmLYjDeQEUwrfL3uwgppPv2uUbTKYGLKQrAsgLJq3slN0kBI5t3liRWH//E1+Nwu50u8/R90kujWkOgcfSj9P60yEQZ/wdUSdlXHv+1i2b2ZJFOtcnOqwQjcOx/1qL3rXtlPx2gEWBn7NqiYhM+A4NGNETIp6CSz5RSuCAEcCr1ib6UQHHAgMBAAECggEAaOkG1Vm1XinatxsrQMlDCZfxHh20NGLDOKs9yqMewuRXIyR5OjiPKvaCvleNbfgcW1QVs39V95XyO8QaupmjNGhaysVh0F88Zv4uG4WcrWAPyQbUKKKeU6x1ZHzEVAs/ePB3ledY5F1NuY5vZafar3BKsScjuAySpCafUH+FVFoViLi9UuMaV0XaBpj/7EeVC/dJwAQg7B+PjYwqW3O+SYWyoSGspuM6ZjZWDAqMcsORe9DwNOxc9Yv0n1Rve0hBMF5QuBAfwa0x7f9LExNATGkZ71nYED/e6aEui1fuFoFnx+3J3flO7yKWo3EFDSf5IT85hFttFKJDK1kv4WxqkQKBgQDyjmsvPWmIkdcPpBwUJ43Wt2mWvqS8Geeumie+kpbvsAqoGMTIblCvcPKi/1WHqp81GHS4wDW+NEDiGBIIShxeFaGhZa/93TTPQoZfx5406Z99a6Ioqo0TC1XtVKSddSUumutHp//wcpdoWBXkA1HvTbu9owgUTtTv0E0XUxZhaQKBgQCzkcMUtL55KfHp13SOHFlSjqJ66fhqhV2pDXDdKz05GKGv24udtynZoPYmiU5vJKBTl2IHHS3KBDf183JHbtf4dpZzBfWCj4wzJMTojBqjmTTYjMkluzgHXuH3H74oa8Q4xzXYK7PCSAztM+IAGNk9tSts3iWY5fBMOD6ZY6izrwKBgQDKnU9J2doDPBhTN3pBF71zJCkuxDfl7RnMj3ctyVQOCpcMTgxrhUMfGpGEuRfgSRXPC4vNHLqIFSwx8Xt2szm5Gga3RLNbs+G+VErdTWmJt7ID2dpOcBGCXBC+PNt5sHaL1Ns/M0YnvAFgJ1y56FAUP3HZeotwM13Kqc0L89sZKQKBgGfr66KIF9O3WrGiZ2n3LhqBQbcwwPukw1ea176nz37Dqo9D18Emx6mTZeFXhXT9FWxLKAhF8sH/PwOwKGr+0y6QMvHOeQ9eVB0lInAS5TfY6qSIlcCoYPyjBNMoI7zw4Vaas6avZBED8bc1V44G03LK7p7K0adzK2ZxBolvC6sxAoGAZQTZbKQaYlhARKkwttwWPu2FTIUgrJ9Q4SioV3tVIGb2qqahOJ/9tyGSFlzSfY4gqaI4BkJi9bjVDF4dfuzAc8CQ9c4rZi2GP0Ut4ncee0agYlTTs7/pt1trDB32q4MLL4k2bwLl14z/LC1dDrcWJlL+nHSPgakCEoqvbv9H7m8=</string>
+    <string name="alicloud_app_rsa_debug">MIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCFRqibpjCBItp5TAJcNFm/NlTOvVJyQCdUlcMkuVAaUUa3zT/PDZPgUeRSSk7YoZmSeS6HzOAiy/l/SgxA4MOvDx0U0eYnW+Jkkn2vggvH0h2AsFSmHQ48g/w9jDezmM5STnjwFAu72Kwm93FoVPWS0w2q4KNvAvnc909j4gbw9iXeCtrbAcJ9+JRzKhiopnm8faNSz4SeP6RBGxiuOTf2+J2R4tZ6MsMHLluzYShqCOhwTm+dR4Nz3xz23OTdv81pew/Dh7QeRrTFTFvz/aQItGVz8DJX+7yQetCL9KD/ailWkcQlg7MG4Y3B4SA42sMNofBQkPDDNsiI/PQlx4QlAgMBAAECggEAbkBopPJTN9DkWOmXHj20bKj+eVRGyvrlTmTh3RRr/olz7gMeISQDS9OTBLwyA6WTjIcxBehnFoIUsMdJ4bXOS5g+H4YQVkj9vOMulC0Jn9Di1R2JuS1aJJeu6B+ByNHFBHOkOj7rAgeZSlbyezOlP0PXD5/rs58Lok74XxGRWm2kXNbls33YB54BCAejJqaPoWt6cM2xJjBr80mTZiLXY5zgijE/AF5jiuHkh6GloepEQyhsZUZuhQ67l5vLOZLJxlFFa0x9vQx6bCBu8QjOHofIO4Fbm0+35PJhaCxvlnOjrG0t3cHZknmBMnrE3uE3vWFOWSEXcpuDO/DEPbupwQKBgQC+pq/xCto19YlAlJ8lD+E4MXO96FZIopqvZTqfbUgriYf08EUcM+1U00DtOSSdjd4zkofLGg3zXdcRcnohOCmzrrr/afP07Ttcj7K2aX6LScNMtB8WcWVaKa3rUQ+/R1LnX3NSDCHyDfsTcK+ta68eEaOp8m5WtUmXhrsHguuC0QKBgQCy9WcOPH8wwBs8egYPpgC1ajdHhbfyVd+LsEDJ3jWbz9IIqnJ5R1/SYxCF58BqYAl0Kg4/jKtnsm4rBTLRhdrWDdxkXCfehOQKqHi0wL0UspSImeukG05uNAnIfpMKy7k+Rb6hpQjaLmFxgsTbOCjoVJ+1uSJi9dEFZkl/W9F5FQKBgH+EyGvGYXvz9lDO17+XZoIKeasNSyEcObCVWeem1b3hKKHJT8B0bwrsniHNtdL4QCZonRFZJPmhy6ds1YmAokv/1C3gdX9eafUYXGWsHCsYNFwKojyFrk/nTt/1gT3ke+wsKNs5KD9Z4JT5K1gojaHkFH8om2q9qTKDuHdmtxXxAoGAM7O+gFhuDrGRrNk8Iw08qyzyp5E0Yaj5mqvjK+8s4cUa0zIbPHqobmn8fhNEffcdBBiaYTXM13qvZXJtCid339vFTqFpS1ptX77okKAWgIJPc1+0uobBFAmowen/pWDSNfGEb8L0WcSIlnjHUuZYuzanpaLFEn4eU0cH+OmYDTkCfx2eCVJ8iyEUDXEpgjNlTdk1+oJk2OZud5vQm9fSsLlvqKDLp4Y9Al2lvOgnQmy/xbYOguuCMr26iMuA/YqJUMsyPoDApeV5bnwUUJoZEHJkoJOc82kdFNj/9UfJ/WQr2oybA5WidNurER/RC2OVpdTyQwWV/OHNCwwxYq9kllI=</string>
+
+    <!--百度地图 API KEY-->
+    <string name="baidu_app_id">34304834</string>
+    <string name="baidu_map_api_key">XUv9vEjdzq2QxLrAC6Nx3vaZLGznE6jS</string>
+    <string name="baidu_secret_key"></string>
+
+    <string name="baidu_app_id_debug">34305002</string>
+    <string name="baidu_map_api_key_debug">T0wE3aG6QxDgDxTGhDx1cP03wUtzvGnX</string>
+    <string name="baidu_secret_key_debug"></string>
+
+    <!-- 通用 -->
+    <string name="common_execute">正在处理中，请稍候……</string>
+
+    <!-- 隐私政策 -->
+    <string name="privacy_policy_tips">感谢您使用贸易APP！\n\n在使用前请仔细阅读《服务协议》和《隐私政策》，以了解我们在使用你个人信息时所遵循的条款。我们将严格按照政策内容使用你的个人信息，尽全力保护您的个人信息安全。感谢信任。</string>
+    <string name="privacy_policy_tips_x">点击同意即表示您已阅读并同意《服务协议》和《隐私政策》</string>
+    <string name="not_privacy_policy_tips">不同意将无法使用我们的产品和服务，并会退出App。</string>
+
+    <!-- 登录 -->
+    <string name="login_agreement_tips">我已阅读并同意《服务协议》和《隐私协议》</string>
+    <string name="loginactivity_login_processtips">正在登录&#8230;</string>
+
+    <!-- 首页 -->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_tradinghall">交易大厅</string>
+    <string name="main_tab_me">我的</string>
+
+    <!-- 选择城市 -->
+    <string name="cp_located_city">定位城市</string>
+    <string name="cp_locating">正在定位…</string>
+    <string name="cp_hot_city">热门城市</string>                                                      <!-- 已开通城市 -->
+</resources>
