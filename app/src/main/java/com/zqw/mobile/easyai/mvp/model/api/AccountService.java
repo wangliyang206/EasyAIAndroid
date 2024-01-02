@@ -2,16 +2,25 @@ package com.zqw.mobile.easyai.mvp.model.api;
 
 import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
+import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.CommonResponse;
+import com.zqw.mobile.easyai.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.LoginResponse;
+import com.zqw.mobile.easyai.mvp.model.entity.WhisperResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
@@ -41,4 +50,27 @@ public interface AccountService {
     @GET()
     Observable<ResponseBody> download(@Url String Url);
 
+    // 文件上传（图片）
+    @Multipart
+    @POST("fileUploadController/uploadFiles")
+    Observable<GsonResponse<ImageUploadResponse>> uploadChatFiles(@Part List<MultipartBody.Part> file);
+    /*-----------------------------------------------------------------------GPT-----------------------------------------------------------------------*/
+
+    // chatGPT 获取历史记录
+    @GET()
+    Observable<ChatHistoryResponse> getChatHistory(@Url String Url);
+
+    // chatGPT 对话
+    @POST()
+    Observable<ResponseBody> chatCreate(@Url String Url, @Body RequestBody params);
+
+    // 语音转文字
+    @Multipart
+    @POST()
+    Observable<WhisperResponse> voiceToText(@Url String Url, @Part MultipartBody.Part file, @PartMap() Map<String, RequestBody> requestBodyMap);
+
+    // 文本转语音
+    @POST()
+    @Streaming
+    Observable<ResponseBody> textToSpeech(@Url String Url, @Body RequestBody params);
 }

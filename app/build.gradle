@@ -265,14 +265,11 @@ dependencies {
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]
-    androidTestImplementation rootProject.ext.dependencies["ext-junit"]
-    androidTestImplementation rootProject.ext.dependencies["androidx-espresso-core"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
 
     //###########################################第三方工具###########################################
     // 添加腾讯bug崩溃日志跟踪(其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9)
     implementation rootProject.ext.dependencies["bugly-crashreport"]
-    // 工具类(https://github.com/Blankj/AndroidUtilCode)
-    implementation rootProject.ext.dependencies["utilcodex"]
     // 支持多进程、多线程的TrayPreferences代替SharedPreferences 的总结(https://github.com/grandcentrix/tray)
     implementation rootProject.ext.dependencies["tray"]
     // 对话框(https://github.com/afollestad/material-dialogs)
@@ -298,8 +295,10 @@ dependencies {
     implementation project(path: ':checkupdatelib')
     // 百度
     implementation files('libs/com.baidu.tts_2.6.2.2.20200629_44818d4.jar')
+    // 百度AI - 语音识别
+    implementation project(path: ':uiasr')
     // Loding效果
     implementation project(path: ':loading-drawable')
-    // Android广告图片轮播控件(https://github.com/youth5201314/banner/tree/release-1.4.10)
-    implementation 'com.youth.banner:banner:1.4.10'
+    // 图片压缩
+    implementation 'top.zibin:Luban:1.1.8'
 }

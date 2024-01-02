@@ -69,6 +69,7 @@ public final class AccountManager {
      * 是否同意隐私政策
      */
     private static final String PRIVACY_POLICY = "privacyPolicy";
+    private static final String FASTGPT_SK = "FastGPT_SK";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -389,5 +390,19 @@ public final class AccountManager {
      */
     public void setSelectCityId(String val) {
         spHelper.put(SELECT_CITY_ID, val);
+    }
+
+
+    /**
+     * 获取ChatGPT API令牌
+     */
+    public String getFastGptSk() {
+        return spHelper.getPref(FASTGPT_SK, Constant.CHATGPT_KEY);
+    }
+    /**
+     * 设置FastGPT API令牌
+     */
+    public void setFastGptSk(String sk) {
+        spHelper.put(FASTGPT_SK, sk);
     }
 }

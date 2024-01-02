@@ -19,12 +19,6 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="NavigationTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
     <!--背景透明-->
     <style name="translucent" parent="AppTheme">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -58,114 +52,12 @@
         <item name="android:background">@null</item>
     </style>
 
-    <!-- TabLayout字体大小 -->
-    <style name="TabLayoutTextStyle">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <!--二维码-->
-    <style name="quick_option_dialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
-        <item name="android:windowBackground">@color/qr_code_bg_white40</item>
-        <item name="android:windowAnimationStyle">@style/dialog_animation</item>
-    </style>
-
-    <style name="dialog_animation" parent="android:Animation">
-        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
-        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
-    </style>
-
-    <!-- view_verify_code.xml 使用 -->
-    <style name="textview_style">
-        <item name="android:layout_height">48dp</item>
-        <item name="android:layout_width">41dp</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">#1A1A1A</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <declare-styleable name="VerticalScrollTextView">
-        <attr name="vst_sleepTime" format="integer" />
-        <attr name="vst_animDuration" format="integer" />
-        <attr name="vst_textSize" format="dimension" />
-        <attr name="vst_textColor" format="color" />
-        <attr name="vst_singleLine" format="boolean" />
-        <attr name="vst_scrollOrientation">
-            <enum name="up" value="0" />
-            <enum name="down" value="1" />
-        </attr>
-
-    </declare-styleable>
-
-    <!-- 二维码 -->
-    <declare-styleable name="AutoScannerView">
-        <attr name="triAngleColor" format="reference|color"/>
-    </declare-styleable>
-
-    <style name="ToolBarTitleText" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">#ffffffff</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="transparentText" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor" >#00000000</item>
-    </style>
-
-    <!-- Activity改写成类似Dialog实现弹出式菜单 -->
-    <style name="customizeDialogStyle" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- 语音 -->
+    <style name="Theme_AudioDialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:backgroundDimEnabled">true</item>
-    </style>
-
-    <style name="DefaultDialog" parent="android:style/Theme.Dialog">
-        <item name="android:background">#00000000</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-    </style>
-
-    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
-        <item name="colorControlNormal">@color/button_normal_bak</item>
-        <item name="colorControlActivated">@color/button_normal_bak</item>
-    </style>
-
-    <declare-styleable name="CameraProgressBar">
-        <attr name="scale" format="float"/>
-        <attr name="isLongScale" format="boolean"/>
-        <attr name="progressWidth" format="dimension"/>
-        <attr name="innerRadio" format="dimension"/>
-        <attr name="innerColor" format="color"/>
-        <attr name="backgroundColor" format="color"/>
-        <attr name="outerColor" format="color"/>
-        <attr name="progressColor" format="color"/>
-        <attr name="maxProgress" format="integer"/>
-        <attr name="progres" format="integer"/>
-    </declare-styleable>
-
-    <style name="AppBaseFullTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@null</item>
-    </style>
-
-
-    <style name="LetterIndexTextViewStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">36dp</item>
-        <item name="android:paddingTop">2dp</item>
-        <item name="android:paddingBottom">2dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/cp_gray</item>
-        <item name="android:background">@color/cp_colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

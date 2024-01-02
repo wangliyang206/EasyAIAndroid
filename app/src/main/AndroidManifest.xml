@@ -24,6 +24,11 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
         <activity
+            android:name=".mvp.ui.activity.GeneralAssistantActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
             android:name=".mvp.ui.activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity

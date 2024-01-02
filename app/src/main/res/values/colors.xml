@@ -45,6 +45,8 @@
     <color name="button_press_bak">#8ec31e</color>
     <!-- 按钮正常颜色 -->
     <color name="button_normal_bak">#46C788</color>
+    <!-- 按钮正常颜色 -->
+    <color name="btn_normal_color">@color/colorPrimary</color>
 
     <!-- 登录分隔线 -->
     <color name="login_line_color">#888888</color>

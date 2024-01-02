@@ -2,3 +2,4 @@
 include ':app'
 include ':arms', ':arms-autolayout', ':arms-imageloader-glide'
 include ':checkupdatelib',':loading-drawable'
+include ':core', ':uiasr'
