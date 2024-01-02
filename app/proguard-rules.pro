@@ -34,18 +34,18 @@
 -printmapping priguardMapping.txt
 -optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
 #业务类库
--keep class com.zqw.mobile.tradeside.mvp.model.entity.** {*;}                                        #实体类不要混淆
+-keep class com.zqw.mobile.easyai.mvp.model.entity.** {*;}                                        #实体类不要混淆
 -dontwarn com.zqw.mobile.tradeside.mvp.model.entity.**
 
 -keep class com.jess.arms.cj.** {*;}                                                                #实体类不要混淆
 -dontwarn com.jess.arms.cj.**
 
 -keep class com.jess.arms.base.BaseApplication {*;}
--keep class com.zqw.mobile.tradeside.app.global.GlobalConfiguration {*;}                             #类不要混淆
--keep class com.zqw.mobile.tradeside.app.utils.AppCrashHandler {*;}                                  #类不要混淆
--keep class com.zqw.mobile.tradeside.app.global.AccountManager {*;}                                  #类不要混淆
--keep class com.zqw.mobile.tradeside.app.global.RequestMapper {*;}                                   #类不要混淆
--keep interface com.zqw.mobile.tradeside.app.global.Constant {*;}                                    #类不要混淆
+-keep class com.zqw.mobile.easyai.app.global.GlobalConfiguration {*;}                             #类不要混淆
+-keep class com.zqw.mobile.easyai.app.utils.AppCrashHandler {*;}                                  #类不要混淆
+-keep class com.zqw.mobile.easyai.app.global.AccountManager {*;}                                  #类不要混淆
+-keep class com.zqw.mobile.easyai.app.global.RequestMapper {*;}                                   #类不要混淆
+-keep interface com.zqw.mobile.easyai.app.global.Constant {*;}                                    #类不要混淆
 
 #类库不要混淆
 -keep class javax.annotation.**{*;}
@@ -238,9 +238,9 @@
 -keepclassmembers class com.jess.arms.base.BaseApplication {
     public <init>();
 }
--keep class com.zqw.mobile.tradeside.app.global.SophixStubApplication {*;}          					 #类不要混淆
+-keep class com.zqw.mobile.easyai.app.global.SophixStubApplication {*;}          					 #类不要混淆
 # 如果不使用android.support.annotation.Keep则需加上此行
--keep class com.zqw.mobile.tradeside.app.global.SophixStubApplication$RealApplicationStub
+-keep class com.zqw.mobile.easyai.app.global.SophixStubApplication$RealApplicationStub
 ##----------------------------------------------
 ############ Gradle Retrolambda混淆规则 ########
 ##----------------------------------------------
@@ -524,8 +524,8 @@ public static java.lang.String TABLENAME;
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
 
--keep class com.zqw.mobile.tradeside.app.service.JPushReceiver {*;}					#类不要混淆
--keep class com.zqw.mobile.tradeside.app.service.JPushReceiver
+-keep class com.zqw.mobile.easyai.app.service.JPushReceiver {*;}					#类不要混淆
+-keep class com.zqw.mobile.easyai.app.service.JPushReceiver
 
 -keep public class cn.jiguang.analytics.android.api.** {*;}
 #==================gson && protobuf==========================

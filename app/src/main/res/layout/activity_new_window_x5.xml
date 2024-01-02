@@ -11,7 +11,7 @@
         layout="@layout/comm_top_light" />
 
     <!--WebView-->
-    <com.zqw.mobile.tradeside.mvp.ui.widget.ProgressWebView
+    <com.zqw.mobile.easyai.mvp.ui.widget.ProgressWebView
         android:id="@+id/pwv_nwx5_webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
