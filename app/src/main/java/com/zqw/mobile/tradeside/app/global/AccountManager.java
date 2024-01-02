@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zqw.mobile.tradeside.BuildConfig;
 import com.zqw.mobile.tradeside.app.utils.AppPreferencesHelper;
+import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

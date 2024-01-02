@@ -6,6 +6,7 @@ import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 import com.zqw.mobile.tradeside.mvp.contract.SplashContract;
 import com.zqw.mobile.tradeside.mvp.model.api.AccountService;
+import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import java.util.HashMap;
 import java.util.Map;

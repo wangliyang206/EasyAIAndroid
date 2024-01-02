@@ -20,17 +20,6 @@ public class CommonResponse {
     // ishaveUser为0时此字段为空字符串，为空字符串是显示默认的提示信息
     private String msg = "";
 
-
-    private List<ArealistBean> areaList;
-
-    public List<ArealistBean> getAreaList() {
-        return areaList;
-    }
-
-    public void setAreaList(List<ArealistBean> areaList) {
-        this.areaList = areaList;
-    }
-
     public int getSucc() {
         return succ;
     }

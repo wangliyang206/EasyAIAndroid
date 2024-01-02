@@ -3,6 +3,7 @@ package com.zqw.mobile.tradeside.mvp.model.api;
 import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.tradeside.mvp.model.entity.CommonResponse;
+import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import java.util.Map;
 
@@ -29,6 +30,10 @@ public interface AccountService {
     //登录-获取短信验证码
     @POST("member/loginSMS")
     Observable<GsonResponse<CommonResponse>> loginSMS(@Body GsonRequest<Map<String, String>> request);
+
+    //登录-获取短信验证码
+    @POST("member/validToken")
+    Observable<GsonResponse<LoginResponse>> validToken(@Body GsonRequest<Map<String, Object>> request);
     /*-----------------------------------------------------------------------通用-----------------------------------------------------------------------*/
 
     // 下载

@@ -12,6 +12,7 @@ import com.zqw.mobile.tradeside.app.global.AccountManager;
 import com.zqw.mobile.tradeside.app.global.Constant;
 import com.zqw.mobile.tradeside.app.utils.RxUtils;
 import com.zqw.mobile.tradeside.mvp.contract.SplashContract;
+import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import javax.inject.Inject;
 

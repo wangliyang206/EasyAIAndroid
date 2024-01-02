@@ -2,6 +2,7 @@ package com.zqw.mobile.tradeside.mvp.contract;
 
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
+import com.zqw.mobile.tradeside.mvp.model.entity.LoginResponse;
 
 import io.reactivex.Observable;
 

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.youth.banner.loader.ImageLoader;
+import com.zqw.mobile.tradeside.mvp.model.entity.Banner;
 
 /**
  * Banner加载图片逻辑

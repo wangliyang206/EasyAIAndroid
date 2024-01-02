@@ -21,12 +21,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
-import com.baidu.location.LocationClient;
-import com.baidu.mapapi.SDKInitializer;
 import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.delegate.AppLifecycles;
-import com.jess.arms.integration.cache.IntelligentCache;
-import com.jess.arms.utils.ArmsUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zqw.mobile.tradeside.BuildConfig;
 import com.zqw.mobile.tradeside.app.utils.FileLoggingTree;
@@ -59,16 +55,6 @@ public class AppLifecyclesImpl implements AppLifecycles {
         initTimber();
 
         initBugly(application);
-
-        // java
-        // 是否同意隐私政策，默认为false
-        SDKInitializer.setAgreePrivacy(application, true);
-        // 初始化百度地图
-        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
-        SDKInitializer.initialize(application);
-
-        // 初始化定位
-        initLocation(application);
     }
 
     @Override
@@ -116,35 +102,4 @@ public class AppLifecyclesImpl implements AppLifecycles {
         CrashReport.initCrashReport(application, BuildConfig.BUGLY_APP_ID, BuildConfig.DEBUG);
     }
 
-    /**
-     * 初始始化定位
-     */
-    private void initLocation(Application application) {
-        // 验证一下经纬度，如果没有经纬度则需要初始一个默认经纬度
-//        AccountManager accountManager = new AccountManager(application);
-//        if (TextUtils.isEmpty(accountManager.getProvince())) {
-//            accountManager.updateLocation(38.031693, 114.540032, 72.81403f, "河北省", "石家庄市", "裕华区", "中国河北省石家庄市裕华区体育南大街227号");
-//        }
-
-        LocationService locationService;
-        try {
-            // setAgreePrivacy接口需要在LocationClient实例化之前调用
-            // 如果setAgreePrivacy接口参数设置为了false，则定位功能不会实现
-            // true，表示用户同意隐私合规政策
-            // false，表示用户不同意隐私合规政策
-            LocationClient.setAgreePrivacy(true);
-            locationService = new LocationService(application);
-            // 配置定位信息
-//        locationService.setLocationOption(locationService.getDefaultLocationClientOption());
-            // 定位回调监听
-            locationService.registerListener(new MyLocationListener(application));
-            // 开启定位
-//        locationService.start();
-
-            // 存储到内存中
-            ArmsUtils.obtainAppComponentFromContext(application).extras().put(IntelligentCache.getKeyOfKeep(LocationService.class.getName()), locationService);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

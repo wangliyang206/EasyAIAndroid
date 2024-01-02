@@ -67,7 +67,7 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
 
             if (apiException.getErrorCode().equals(ErrorCode.TOKEN_ERROR)) {
                 // Token失效
-                ActivityUtils.startActivity(LoginActivity.class);
+//                ActivityUtils.startActivity(LoginActivity.class);
             }
         }
         ArmsUtils.snackbarText(msg);

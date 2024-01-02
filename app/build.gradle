@@ -107,7 +107,7 @@ android {
             buildConfigField "boolean", "USE_CANARY", "true"
 
             // 腾讯Bugly AppId
-            buildConfigField "String", "BUGLY_APP_ID", "\"10a9282065\""
+            buildConfigField "String", "BUGLY_APP_ID", "\"6ffbd5c8c0\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSideTest\""
@@ -150,7 +150,7 @@ android {
             buildConfigField "boolean", "USE_CANARY", "false"
 
             // 腾讯Bugly AppId
-            buildConfigField "String", "BUGLY_APP_ID", "\"344f68ff0d\""
+            buildConfigField "String", "BUGLY_APP_ID", "\"db93a31961\""
 
             // SP文件名称
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSide\""
