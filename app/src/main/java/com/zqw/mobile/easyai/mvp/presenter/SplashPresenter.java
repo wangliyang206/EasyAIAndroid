@@ -53,6 +53,8 @@ public class SplashPresenter extends BasePresenter<SplashContract.Model, SplashC
      * 控制业务逻辑
      */
     public void initPresenter() {
+        // 初始APP升级提醒数据设置
+        mAccountManager.setUpgrade(true);
         // 验证Token
         validToken();
     }

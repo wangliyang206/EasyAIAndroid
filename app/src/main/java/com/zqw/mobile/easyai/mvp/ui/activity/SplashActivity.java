@@ -168,7 +168,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
      */
     @Override
     public void jumbToLogin() {
-        ActivityUtils.startActivity(GeneralAssistantActivity.class);
+        ActivityUtils.startActivity(MainActivity.class);
         killMyself();
     }
 

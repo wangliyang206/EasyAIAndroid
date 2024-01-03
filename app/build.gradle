@@ -303,4 +303,6 @@ dependencies {
     implementation project(path: ':loading-drawable')
     // 图片压缩
     implementation 'top.zibin:Luban:1.1.8'
+    // 自定义圆形图片控件(https://github.com/hdodenhof/CircleImageView)
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }

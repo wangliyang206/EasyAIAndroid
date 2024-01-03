@@ -3,40 +3,39 @@ package com.zqw.mobile.easyai.di.module;
 import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.cj.IRequestMapper;
 import com.jess.arms.di.scope.ActivityScope;
+import com.zqw.mobile.easyai.app.global.AccountManager;
+import com.zqw.mobile.easyai.app.global.RequestMapper;
+import com.zqw.mobile.easyai.mvp.contract.ChatGptContract;
+import com.zqw.mobile.easyai.mvp.model.ChatGptModel;
 
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
-import com.zqw.mobile.easyai.app.global.AccountManager;
-import com.zqw.mobile.easyai.app.global.RequestMapper;
-import com.zqw.mobile.easyai.mvp.contract.MainContract;
-import com.zqw.mobile.easyai.mvp.contract.SplashContract;
-import com.zqw.mobile.easyai.mvp.model.MainModel;
-
 /**
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 2024/01/02 16:33
+ * Created by MVPArmsTemplate on 2024/01/03 17:45
  * ================================================
  */
 @Module
-//构建MainModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
-public abstract class MainModule {
+//构建ChatGptModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
+public abstract class ChatGptModule {
 
     @Binds
-    abstract MainContract.Model bindMainModel(MainModel model);
+    abstract ChatGptContract.Model bindChatGptModel(ChatGptModel model);
+
 
     @ActivityScope
     @Provides
-    static AccountManager provideAccountManager(MainContract.View view) {
+    static AccountManager provideAccountManager(ChatGptContract.View view) {
         return new AccountManager(view.getActivity());
     }
 
     @ActivityScope
     @Provides
-    static IRequestMapper providerRequestMapper(MainContract.View view, AccountManager mAccountManager) {
+    static IRequestMapper providerRequestMapper(ChatGptContract.View view, AccountManager mAccountManager) {
         return new RequestMapper(view.getActivity(), mAccountManager);
     }
 

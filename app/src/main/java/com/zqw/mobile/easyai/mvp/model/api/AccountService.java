@@ -4,6 +4,7 @@ import com.jess.arms.cj.GsonRequest;
 import com.jess.arms.cj.GsonResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.CommonResponse;
+import com.zqw.mobile.easyai.mvp.model.entity.HomeChatResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.ImageUploadResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.LoginResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.WhisperResponse;
@@ -49,6 +50,10 @@ public interface AccountService {
     @Streaming
     @GET()
     Observable<ResponseBody> download(@Url String Url);
+
+    // 获取对话列表
+    @POST("member/getChatList")
+    Observable<GsonResponse<HomeChatResponse>> getChatList(@Body GsonRequest<Map<String, Object>> request);
 
     // 文件上传（图片）
     @Multipart

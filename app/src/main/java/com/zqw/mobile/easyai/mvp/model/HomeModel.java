@@ -4,9 +4,9 @@ import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
-import com.zqw.mobile.easyai.mvp.contract.MainContract;
-import com.zqw.mobile.easyai.mvp.model.api.SystemService;
-import com.zqw.mobile.easyai.mvp.model.entity.AppUpdate;
+import com.zqw.mobile.easyai.mvp.contract.HomeContract;
+import com.zqw.mobile.easyai.mvp.model.api.AccountService;
+import com.zqw.mobile.easyai.mvp.model.entity.HomeChatResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,16 +19,16 @@ import io.reactivex.Observable;
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 2024/01/02 16:33
+ * Created by MVPArmsTemplate on 2024/01/03 11:36
  * ================================================
  */
 @ActivityScope
-public class MainModel extends BaseModel implements MainContract.Model {
+public class HomeModel extends BaseModel implements HomeContract.Model {
     @Inject
     ApiOperator apiOperator;                                                                        // 数据转换
 
     @Inject
-    public MainModel(IRepositoryManager repositoryManager) {
+    public HomeModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
 
@@ -36,13 +36,15 @@ public class MainModel extends BaseModel implements MainContract.Model {
     public void onDestroy() {
         super.onDestroy();
         this.apiOperator = null;
+
     }
 
     @Override
-    public Observable<AppUpdate> getVersion(String type) {
+    public Observable<HomeChatResponse> getChatList(int pageNo, int pageSize) {
         Map<String, Object> params = new HashMap<>();
-        params.put("type", type);
+        params.put("pageNo", pageNo);
+        params.put("pageSize", pageSize);
 
-        return apiOperator.chain(params, request -> mRepositoryManager.obtainRetrofitService(SystemService.class).getVersion(request));
+        return apiOperator.chain(params, request -> mRepositoryManager.obtainRetrofitService(AccountService.class).getChatList(request));
     }
 }
