@@ -51,12 +51,9 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
         ndk {
-            //设置支持的SO库架构
-            //选择要添加的对应cpu类型的.so库。
-            //热修复支持五种
-//            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
-            // Bugly支持一种
-            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            // 设置支持的SO库架构(百度地图)
+//          abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi-v7a'
         }
 
         //是否使用本地测试数据
@@ -116,7 +113,7 @@ android {
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://192.168.0.54:6889/\""
             // 路由侠
-            buildConfigField "String", "SERVER_URL_VALUE", "\"http://buypb.e2.luyouxia.net:30302/\""
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://pb.szjltscm.cn/RecycleOrgApp/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"
@@ -156,7 +153,7 @@ android {
             buildConfigField "String", "SHARED_NAME_INVEST", "\"sharedTradeSide\""
 
             // 服务地址
-            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://pb.szjltscm.cn/RecycleOrgApp/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name"
@@ -293,7 +290,12 @@ dependencies {
     api "com.google.zxing:core:3.3.0"
     // 检查更新
     implementation project(path: ':checkupdatelib')
-    // 百度
+    // 百度地图
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Location_All:9.1.8'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map-Navi:7.4.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.4.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.4.0'
+//    implementation 'com.baidu.lbsyun:NaviTts:2.5.5'
     implementation files('libs/com.baidu.tts_2.6.2.2.20200629_44818d4.jar')
     // 百度AI - 语音识别
     implementation project(path: ':uiasr')

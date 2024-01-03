@@ -16,11 +16,11 @@
     <!--百度地图 API KEY-->
     <string name="baidu_app_id">46244412</string>
     <string name="baidu_map_api_key">i19LSPr01aXaSTU33yIk2C81qZGvFx60</string>
-    <string name="baidu_secret_key"></string>
+    <string name="baidu_secret_key">0vWqq9rj4M9pciiAVAWPjFWema3Dt6vO</string>
 
     <string name="baidu_app_id_debug">46244426</string>
     <string name="baidu_map_api_key_debug">vQcaG0g6ZKuTVGG752fR0EC4gVDMu5SI</string>
-    <string name="baidu_secret_key_debug"></string>
+    <string name="baidu_secret_key_debug">0x1odmbqnnSdFQVwwLDdjxTb1q56qkHj</string>
 
     <!-- 通用 -->
     <string name="common_execute">正在处理中，请稍候……</string>
