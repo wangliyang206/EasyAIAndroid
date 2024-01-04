@@ -3,6 +3,173 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
+
+    <!-- 图片 -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civi_fragmentmytab_pic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="80dp"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp" />
+
+    <!-- 姓名 -->
+    <TextView
+        android:id="@+id/txvi_fragmentmytab_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="姓名"
+        android:textColor="@color/common_text_color"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/edittext_rounded_background"
+        android:orientation="vertical">
+
+        <!-- 服务协议 -->
+        <LinearLayout
+            android:id="@+id/lila_fragmentmytab_serviceagreement"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_home_message" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_weight="1"
+                android:text="服务协议"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@mipmap/ic_right_arrow_gray"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <!-- 隐私政策 -->
+        <LinearLayout
+            android:id="@+id/lila_fragmentmytab_privacypolicy"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_home_message" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_weight="1"
+                android:text="隐私政策"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@mipmap/ic_right_arrow_gray"
+                android:contentDescription="@null" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/edittext_rounded_background"
+        android:orientation="vertical">
+
+        <!-- 关于 -->
+        <LinearLayout
+            android:id="@+id/lila_fragmentmytab_about"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_home_message" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_weight="1"
+                android:text="关于"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@mipmap/ic_right_arrow_gray"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <!-- 退出登录 -->
+        <LinearLayout
+            android:id="@+id/lila_fragmentmytab_out"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_home_message" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_weight="1"
+                android:text="退出登录"
+                android:textColor="@color/common_text_color"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

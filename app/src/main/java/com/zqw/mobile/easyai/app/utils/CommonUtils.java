@@ -392,7 +392,7 @@ public class CommonUtils {
      */
     public static void exitSys(Context context) {
         if ((System.currentTimeMillis() - lastClickTime) > 2000) {
-            ArmsUtils.makeText(context, ArmsUtils.getString(context, "再按一次退出"));
+            ArmsUtils.makeText(context, "再按一次退出");
             lastClickTime = System.currentTimeMillis();
         } else {
             ArmsUtils.killAll();
