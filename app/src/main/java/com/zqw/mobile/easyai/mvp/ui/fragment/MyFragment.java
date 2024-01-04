@@ -10,19 +10,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.zqw.mobile.easyai.R;
 import com.zqw.mobile.easyai.app.global.AccountManager;
+import com.zqw.mobile.easyai.app.global.Constant;
 import com.zqw.mobile.easyai.di.component.DaggerMyComponent;
 import com.zqw.mobile.easyai.mvp.contract.MyContract;
 import com.zqw.mobile.easyai.mvp.presenter.MyPresenter;
+import com.zqw.mobile.easyai.mvp.ui.activity.AboutActivity;
+import com.zqw.mobile.easyai.mvp.ui.activity.LoginActivity;
+import com.zqw.mobile.easyai.mvp.ui.activity.NewWindowX5Activity;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -45,6 +52,21 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     AccountManager mAccountManager;
     @Inject
     ImageLoader mImageLoader;
+
+    // 退出登录
+    private MaterialDialog mOutLoginTips = null;
+
+    @Override
+    public void onDestroy() {
+        if (mOutLoginTips != null) {
+            this.mOutLoginTips.dismiss();
+        }
+        super.onDestroy();
+        this.mOutLoginTips = null;
+
+        this.mImageLoader = null;
+        this.mAccountManager = null;
+    }
 
     @Override
     public void onResume() {
@@ -85,7 +107,49 @@ public class MyFragment extends BaseFragment<MyPresenter> implements MyContract.
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+        // 退出登录
+        mOutLoginTips = new MaterialDialog.Builder(getContext()).title("温馨提示").content("确认退出当前账号？").positiveText("确定").negativeText("取消")
+                .onPositive((dialog, which) -> {
+                    // 清除缓存
+                    mAccountManager.clearAccountInfo();
+                    ActivityUtils.startActivity(LoginActivity.class);
+                })
+                .onNegative((dialog, which) -> {
+                }).cancelable(false).build();
     }
+
+    @OnClick({
+            R.id.lila_fragmentmytab_serviceagreement,                                               // 服务协议
+            R.id.lila_fragmentmytab_privacypolicy,                                                  // 隐私政策
+            R.id.lila_fragmentmytab_about,                                                          // 关于
+            R.id.lila_fragmentmytab_out,                                                            // 退出登录
+    })
+    public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        switch (v.getId()) {
+            case R.id.lila_fragmentmytab_serviceagreement:                                          // 服务协议
+                bundle.putBoolean("isShowTop", true);
+                bundle.putString("URL", Constant.serviceAgreementUrl);
+                bundle.putString("TITLE", "服务协议");
+                ActivityUtils.startActivity(bundle, NewWindowX5Activity.class);
+                break;
+            case R.id.lila_fragmentmytab_privacypolicy:                                             // 隐私政策
+                bundle.putBoolean("isShowTop", true);
+                bundle.putString("URL", Constant.privacyPolicyUrl);
+                bundle.putString("TITLE", "隐私政策");
+                ActivityUtils.startActivity(bundle, NewWindowX5Activity.class);
+                break;
+            case R.id.lila_fragmentmytab_about:                                                     // 关于
+                ActivityUtils.startActivity(AboutActivity.class);
+                break;
+            case R.id.lila_fragmentmytab_out:                                                       // 退出登录
+                if (mOutLoginTips != null) {
+                    mOutLoginTips.show();
+                }
+                break;
+        }
+    }
+
 
     @Override
     public void setData(@Nullable Object data) {

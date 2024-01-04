@@ -24,6 +24,9 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
         <activity
+            android:name=".mvp.ui.activity.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".mvp.ui.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"

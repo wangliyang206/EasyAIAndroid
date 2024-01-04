@@ -29,10 +29,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/edittext_rounded_background"
         android:orientation="vertical">
 
         <!-- 服务协议 -->
@@ -41,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/my_item_up_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -68,12 +68,19 @@
                 android:contentDescription="@null" />
         </LinearLayout>
 
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_frame_color" />
+
         <!-- 隐私政策 -->
         <LinearLayout
             android:id="@+id/lila_fragmentmytab_privacypolicy"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/my_item_down_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -102,14 +109,12 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/edittext_rounded_background"
         android:orientation="vertical">
 
         <!-- 关于 -->
@@ -118,6 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/my_item_up_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -145,12 +151,19 @@
                 android:contentDescription="@null" />
         </LinearLayout>
 
+        <!-- 分割线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/line_frame_color" />
+
         <!-- 退出登录 -->
         <LinearLayout
             android:id="@+id/lila_fragmentmytab_out"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
+            android:background="@drawable/my_item_down_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 

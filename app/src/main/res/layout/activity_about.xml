@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg_color">
+
+    <!-- 头部 -->
+    <include
+        android:id="@+id/view_aboutactivity_top"
+        layout="@layout/comm_top_dark" />
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imvi_aboutactivity_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:src="@mipmap/icon_upgrade_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_aboutactivity_top" />
+
+    <!-- 名称 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/common_text_color"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintRight_toRightOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintTop_toBottomOf="@+id/imvi_aboutactivity_logo" />
+
+    <!-- 版本号 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Version.1.0.0"
+        android:textColor="#343434"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintRight_toRightOf="@+id/imvi_aboutactivity_logo"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_aboutactivity_name" />
+
+    <!-- 内容 -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/about_introduction"
+        android:textColor="#3D3D3D"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvi_aboutactivity_version" />
+
+    <!-- 底部 -->
+    <TextView
+        android:id="@+id/txvi_aboutactivity_serviceAgreement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="right"
+        android:text="服务协议"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/txvi_aboutactivity_copyright"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/txvi_aboutactivity_line" />
+
+    <View
+        android:id="@+id/txvi_aboutactivity_line"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/line_input_color"
+        app:layout_constraintBottom_toBottomOf="@+id/txvi_aboutactivity_serviceAgreement"
+        app:layout_constraintLeft_toRightOf="@+id/txvi_aboutactivity_serviceAgreement"
+        app:layout_constraintRight_toLeftOf="@+id/txvi_aboutactivity_privacyPolicy"
+        app:layout_constraintTop_toTopOf="@+id/txvi_aboutactivity_serviceAgreement" />
+
+    <TextView
+        android:id="@+id/txvi_aboutactivity_privacyPolicy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="隐私政策"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txvi_aboutactivity_serviceAgreement"
+        app:layout_constraintLeft_toRightOf="@+id/txvi_aboutactivity_line"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvi_aboutactivity_serviceAgreement" />
+
+    <TextView
+        android:id="@+id/txvi_aboutactivity_copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="@string/about_copyright"
+        android:textColor="@color/common_text_tips_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

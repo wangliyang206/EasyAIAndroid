@@ -43,4 +43,8 @@
     <string name="str_recorder_noraml">按住说话</string>
     <string name="str_recorder_recording">松开结束</string>
     <string name="str_recorder_want_cancel">松开手指，取消发送</string>
+
+    <!--关于-->
+    <string name="about_copyright">Copyright © 2015-2024 山东易收网数字科技有限公司.</string>
+    <string name="about_introduction">  易收网回收产业AI助手APP软件是一种利用人工智能技术为回收产业提供支持和服务的工具。它的核心功能是通过对回收产业的数据进行收集、整理和分析，帮助企业了解市场需求、掌握行业动态、预测趋势，从而更好地制定战略和决策。此外，它还可以利用图像识别、语音识别等技术对回收物品进行自动分类和识别，提高分类准确性和效率，减少人力成本。在物流方面，易收网回收产业AI助手APP软件可以通过对物流数据的分析和优化，帮助企业降低运输成本、提高运输效率，同时也可以减少环境污染。在客户服务方面，它利用自然语言处理技术为客户提供 24 小时在线服务，解答疑问、提供建议，提高客户满意度。易收网回收产业AI助手APP软件的应用可以涵盖多个领域。它可以为回收企业提供全方位的支持和服务，帮助企业实现数字化转型和升级。</string>
 </resources>
