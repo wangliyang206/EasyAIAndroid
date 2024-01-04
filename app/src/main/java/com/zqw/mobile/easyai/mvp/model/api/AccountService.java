@@ -37,13 +37,17 @@ import retrofit2.http.Url;
 public interface AccountService {
 
     /*-----------------------------------------------------------------------用户基本-----------------------------------------------------------------------*/
-    //登录-获取短信验证码
+    //验证Token有效性
+    @POST("member/validToken")
+    Observable<GsonResponse<LoginResponse>> validToken(@Body GsonRequest<Map<String, Object>> request);
+
+    //获取短信验证码
     @POST("member/loginSMS")
     Observable<GsonResponse<CommonResponse>> loginSMS(@Body GsonRequest<Map<String, String>> request);
 
-    //登录-获取短信验证码
-    @POST("member/validToken")
-    Observable<GsonResponse<LoginResponse>> validToken(@Body GsonRequest<Map<String, Object>> request);
+    //快捷登录
+    @POST("member/quickLogin")
+    Observable<GsonResponse<LoginResponse>> quickLogin(@Body GsonRequest<Map<String, String>> request);
     /*-----------------------------------------------------------------------通用-----------------------------------------------------------------------*/
 
     // 下载

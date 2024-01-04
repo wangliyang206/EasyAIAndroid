@@ -59,6 +59,11 @@ public class NewWindowX5Activity extends BaseActivity<NewWindowX5Presenter> impl
     // 是否显示Top
     private boolean isShowTop;
 
+    @Override
+    public boolean isSupportSwipeBack() {
+        return false;
+    }
+
     /**
      * 将状态栏改为浅色、深色模式(状态栏 icon 和字体，false = 浅色，true = 深色)
      */

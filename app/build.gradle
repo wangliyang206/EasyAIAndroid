@@ -168,7 +168,7 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 项目名-编译类型-版本号.apk
-            def appName = "易AI"
+            def appName = "回收助手-AI"
             def filesuffix = variant.buildType.name
             def fileName = "${appName}-${filesuffix}-${versionName}.apk"
 

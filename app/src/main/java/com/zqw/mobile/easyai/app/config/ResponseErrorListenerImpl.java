@@ -18,11 +18,13 @@ package com.zqw.mobile.easyai.app.config;
 import android.content.Context;
 import android.net.ParseException;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.jess.arms.cj.ApiException;
 import com.jess.arms.cj.ErrorCode;
 import com.jess.arms.utils.ArmsUtils;
+import com.zqw.mobile.easyai.mvp.ui.activity.LoginActivity;
 
 import org.json.JSONException;
 
@@ -66,7 +68,7 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
 
             if (apiException.getErrorCode().equals(ErrorCode.TOKEN_ERROR)) {
                 // Token失效
-//                ActivityUtils.startActivity(LoginActivity.class);
+                ActivityUtils.startActivity(LoginActivity.class);
             }
         }
         ArmsUtils.snackbarText(msg);

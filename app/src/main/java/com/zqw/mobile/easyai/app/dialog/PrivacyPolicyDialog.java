@@ -57,8 +57,8 @@ public class PrivacyPolicyDialog extends AlertDialog implements View.OnClickList
         findViewById(R.id.txvi_popprivacypolicydialog_yes).setOnClickListener(this);
         TextView txviContent = findViewById(R.id.txvi_popprivacypolicydialog_content);
         SpannableString agreement = new SpannableString(getContext().getString(R.string.privacy_policy_tips));
-        agreement.setSpan(new MyClickableSpan("《服务协议》"), 21, 27, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
-        agreement.setSpan(new MyClickableSpan("《隐私政策》"), 28, 34, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
+        agreement.setSpan(new MyClickableSpan("《服务协议》"), 25, 31, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
+        agreement.setSpan(new MyClickableSpan("《隐私政策》"), 32, 38, SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
         txviContent.setText(agreement);
         txviContent.setMovementMethod(LinkMovementMethod.getInstance());
 

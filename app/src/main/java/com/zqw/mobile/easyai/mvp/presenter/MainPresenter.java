@@ -48,8 +48,8 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
      */
     public void initData(Bundle bundle) {
         // APP升级更新
-//        if (mAccountManager.getUpgrade())
-//            checkUpdateManager();
+        if (mAccountManager.getUpgrade())
+            checkUpdateManager();
     }
 
     /**
@@ -59,7 +59,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
         // 提醒过了
         mAccountManager.setUpgrade(false);
         if (IS_DEBUG_DATA) {
-            AppUpdate appUpdate = new AppUpdate(112, "1.1.2", "小的来了", "小的来了.apk", "http:\\/\\/buypb.e1.luyouxia.net:28708\\/imgs\\/update\\/recycleapp-debug-1.1.2.apk", 1, 18, "1.更新了好多东西\n1.更新了好多东西\n1.更新了好多东西");
+            AppUpdate appUpdate = new AppUpdate(100, "1.1.2", "小的来了", "小的来了.apk", "http://www.buypb.cn/softDownLoad/xdllrecycle_jlt-1.8.0.apk", 1, 18, "1.更新了好多东西\n1.更新了好多东西\n1.更新了好多东西");
             if (haveNew(appUpdate)) {
                 // 先提醒升级
                 mRootView.askDialog(appUpdate);
