@@ -75,25 +75,30 @@ public interface Constant {
     String CHATGPT_KEY = "sk-GlgmPE0qiewPnNg6760703686fD4468683C655Ed1eA75e37";
 
 
+//    https://api.fastgpt.in/api
+//    http://yunguichu.e2.luyouxia.net:22172/api
+
     /**
      * FastGPT API 地址
      */
-    String FASTGPT_CHAT_URL = "https://api.fastgpt.in/api/v1/chat/completions";
+    String FASTGPT_CHAT_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/chat/completions";
     /**
      * 获取历史记录
      */
-    String FASTGPT_HISTORY_URL = "https://api.fastgpt.in/api/v1/chat/history";
+    String FASTGPT_HISTORY_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/chat/history";
     /**
      * 语音转文字
      */
-    String FASTGPT_TRANSCRIPTIONS_URL = "https://api.fastgpt.in/api/v1/audio/transcriptions";
+    String FASTGPT_TRANSCRIPTIONS_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/audio/transcriptions";
     /**
      * 文字转语音
      */
-    String FASTGPT_SPEECH_URL = "https://api.fastgpt.in/api/v1/audio/speech";
+    String FASTGPT_SPEECH_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/audio/speech";
     // 企业智能客服：带有知识库，可以回答企业任何问题
-    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
-    String FASTGPT_APPID = "656fce2d993ca09b160e9ea7";
+//    String FASTGPT_KEY = "fastgpt-jeq4kr7IUN9Qvvi1Bv4C7ddJIeW3GJtHE";
+//    String FASTGPT_APPID = "656fce2d993ca09b160e9ea7";
+    String FASTGPT_KEY = "fastgpt-yV1VTGscfI3Gejet5x3kFI9da1";
+    String FASTGPT_APPID = "65a778deffbc01a98b7f63b0";
 
     // 豆芽AI助手
     String FASTGPT_DOUYA_KEY = "fastgpt-lEmLoX75QqwHeUmvwbVFkIXwJSsREJ";
