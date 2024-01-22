@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_home_message" />
+                android:src="@mipmap/ic_my_agreement" />
 
             <TextView
                 android:layout_width="0dp"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_home_message" />
+                android:src="@mipmap/ic_my_privacypolicy" />
 
             <TextView
                 android:layout_width="0dp"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_home_message" />
+                android:src="@mipmap/ic_my_about" />
 
             <TextView
                 android:layout_width="0dp"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_home_message" />
+                android:src="@mipmap/ic_my_out" />
 
             <TextView
                 android:layout_width="0dp"
