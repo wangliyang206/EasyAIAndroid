@@ -294,7 +294,6 @@ com.zqw.mobile.easyai.mvp.ui.fragment.ChatGptFragment:
     public androidx.fragment.app.Fragment getFragment()
     public void onLoadVoiceToText(java.lang.String)
     public void onLoadImages(java.lang.String)
-    public void showLoading()
     public void launchActivity(android.content.Intent)
 androidx.core.app.NotificationCompatBuilder:
     public android.app.Notification$Builder getBuilder()
@@ -522,9 +521,6 @@ androidx.core.text.TextDirectionHeuristicsCompat:
     private static final int STATE_UNKNOWN
 com.zqw.mobile.easyai.mvp.ui.fragment.HomeFragment:
     public static com.zqw.mobile.easyai.mvp.ui.fragment.HomeFragment newInstance()
-    public void startLoadMore()
-    public void noInfo()
-    public void showLoading()
     public void setData(java.lang.Object)
     public androidx.fragment.app.Fragment getFragment()
 androidx.transition.ViewGroupUtils:
@@ -1363,9 +1359,6 @@ androidx.tracing.Trace:
 androidx.core.view.DragAndDropPermissionsCompat
 androidx.transition.Styleable$PatternPathMotion
 androidx.vectordrawable.R
-com.zqw.mobile.easyai.mvp.model.MainModel:
-    private synthetic io.reactivex.Observable lambda$getVersion$0(com.jess.arms.cj.GsonRequest)
-    public io.reactivex.Observable getVersion(java.lang.String)
 com.zqw.mobile.easyai.mvp.model.SplashModel_MembersInjector:
     public void <init>(javax.inject.Provider)
     public static dagger.MembersInjector create(javax.inject.Provider)
@@ -1553,8 +1546,6 @@ com.zqw.mobile.easyai.mvp.presenter.GeneralAssistantPresenter_MembersInjector:
     private final javax.inject.Provider mAccountManagerProvider
 cn.bingoogolapple.swipebacklayout.BuildConfig
 kotlin.coroutines.experimental.migration.ContinuationMigration
-com.zqw.mobile.easyai.mvp.contract.MainContract$Model:
-    public abstract io.reactivex.Observable getVersion(java.lang.String)
 kotlin.coroutines.jvm.internal.RunSuspend
 com.qiangxi.checkupdatelibrary.CheckUpdateOption$Builder:
     public com.qiangxi.checkupdatelibrary.CheckUpdateOption$Builder setOption(com.qiangxi.checkupdatelibrary.CheckUpdateOption)
@@ -2120,7 +2111,6 @@ androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStat
 kotlin.LazyKt
 kotlin.collections.ShortIterator
 com.jess.arms.utils.DeviceUtils:
-    private void <init>()
     public static float dpToPixel(android.content.Context,float)
     public static float pixelsToDp(android.content.Context,float)
     public static int getDefaultLoadFactor(android.content.Context)
@@ -2731,8 +2721,6 @@ androidx.constraintlayout.helper.widget.Carousel:
     private static final java.lang.String TAG
     public static final int TOUCH_UP_IMMEDIATE_STOP
     public static final int TOUCH_UP_CARRY_ON
-com.zqw.mobile.easyai.mvp.contract.HomeContract$Model:
-    public abstract io.reactivex.Observable getChatList(int,int)
 kotlin.jvm.internal.PropertyReference1Impl
 kotlin.jvm.internal.TypeReference$asString$args$1
 com.blankj.utilcode.util.KeyboardUtils$3
@@ -3300,12 +3288,7 @@ kotlin.jvm.internal.FunctionReference
 androidx.recyclerview.widget.DiffUtil$PostponedUpdate
 com.zqw.mobile.easyai.app.utils.RxUtils:
     private void <init>()
-    public static io.reactivex.ObservableTransformer applySchedulers(com.jess.arms.mvp.IView)
-    public static io.reactivex.ObservableTransformer applySchedulers(com.jess.arms.mvp.IView,boolean,boolean)
     public static com.trello.rxlifecycle2.LifecycleTransformer bindToLifecycle(com.jess.arms.mvp.IView)
-    private static synthetic io.reactivex.ObservableSource lambda$applySchedulers$2(boolean,com.jess.arms.mvp.IView,boolean,io.reactivex.Observable)
-    private static synthetic void lambda$applySchedulers$1(boolean,com.jess.arms.mvp.IView)
-    private static synthetic void lambda$applySchedulers$0(boolean,com.jess.arms.mvp.IView,io.reactivex.disposables.Disposable)
 kotlin.collections.LongIterator
 androidx.constraintlayout.widget.Constraints$LayoutParams:
     public void <init>(androidx.constraintlayout.widget.Constraints$LayoutParams)
@@ -3627,10 +3610,6 @@ dagger.internal.Preconditions:
 androidx.core.content.res.ConfigurationHelper
 androidx.vectordrawable.graphics.drawable.VectorDrawableCommon:
     protected void onBoundsChange(android.graphics.Rect)
-com.zqw.mobile.easyai.mvp.contract.LoginContract$Model:
-    public abstract io.reactivex.Observable loginSMS(java.lang.String)
-    public abstract io.reactivex.Observable quickLogin(java.lang.String,java.lang.String)
-    public abstract io.reactivex.Observable getVersion(java.lang.String)
 androidx.legacy.coreutils.R
 kotlin.text.Charsets
 com.zqw.mobile.easyai.app.utils.ThreadUtil
@@ -5123,9 +5102,6 @@ kotlin.jvm.internal.ClassBasedDeclarationContainer
 androidx.core.app.NotificationManagerCompat$NotifyTask
 com.blankj.utilcode.util.ToastUtils$ActivityToast
 io.rx_cache2.internal.DaggerRxCacheComponent$Builder
-com.zqw.mobile.easyai.mvp.model.SplashModel:
-    private synthetic io.reactivex.Observable lambda$validToken$0(com.jess.arms.cj.GsonRequest)
-    public io.reactivex.Observable validToken()
 androidx.constraintlayout.core.motion.utils.SplineSet$CustomSet
 androidx.appcompat.view.menu.MenuPopup:
     public androidx.appcompat.view.menu.MenuView getMenuView(android.view.ViewGroup)
@@ -6892,8 +6868,6 @@ androidx.transition.Styleable$ChangeBounds
 com.qiangxi.checkupdatelibrary.exception.RequestException
 androidx.constraintlayout.core.state.helpers.VerticalChainReference
 kotlin.collections.AbstractIterator
-com.zqw.mobile.easyai.mvp.contract.SplashContract$View:
-    public abstract void jumbToMain()
 kotlin.collections.CollectionsKt__CollectionsKt
 androidx.cursoradapter.R
 androidx.core.provider.FontsContractCompat:
@@ -7392,13 +7366,9 @@ kotlin.jvm.internal.FunctionImpl
 androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject
 com.blankj.utilcode.util.LanguageUtils$1
 com.zqw.mobile.easyai.R
-com.zqw.mobile.easyai.mvp.model.api.SystemService
 kotlin.StandardKt__SynchronizedKt
 androidx.collection.CircularArray
 io.rx_cache2.internal.cache.memory.apache.AbstractReferenceMap$ReferenceEntrySet
-com.zqw.mobile.easyai.mvp.model.HomeModel:
-    private synthetic io.reactivex.Observable lambda$getChatList$0(com.jess.arms.cj.GsonRequest)
-    public io.reactivex.Observable getChatList(int,int)
 kotlin.sequences.SequencesKt___SequencesKt$onEach$1
 kotlin.collections.Grouping
 kotlin.jvm.KotlinReflectionNotSupportedError
@@ -7754,13 +7724,6 @@ com.blankj.utilcode.util.Utils$Supplier
 androidx.core.text.BidiFormatter$DirectionalityEstimator:
     private static final int DIR_TYPE_CACHE_SIZE
 dagger.internal.MembersInjectors
-com.zqw.mobile.easyai.mvp.model.LoginModel:
-    private synthetic io.reactivex.Observable lambda$getVersion$2(com.jess.arms.cj.GsonRequest)
-    private synthetic io.reactivex.Observable lambda$quickLogin$1(com.jess.arms.cj.GsonRequest)
-    private synthetic io.reactivex.Observable lambda$loginSMS$0(com.jess.arms.cj.GsonRequest)
-    public io.reactivex.Observable loginSMS(java.lang.String)
-    public io.reactivex.Observable quickLogin(java.lang.String,java.lang.String)
-    public io.reactivex.Observable getVersion(java.lang.String)
 kotlin.collections.FloatIterator
 kotlin.comparisons.UComparisonsKt
 kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt
@@ -8446,10 +8409,6 @@ androidx.core.view.WindowInsetsCompat$BuilderImpl:
 kotlin.ranges.LongRange$Companion
 androidx.core.location.LocationManagerCompat$GpsStatusTransport$2
 kotlin.ranges.IntProgression$Companion
-com.zqw.mobile.easyai.mvp.presenter.HomePresenter:
-    private synthetic void lambda$getChatList$1(boolean)
-    private synthetic void lambda$getChatList$0(boolean,io.reactivex.disposables.Disposable)
-    private int preEndIndex
 kotlin.reflect.KFunction$DefaultImpls
 kotlin.reflect.KTypeParameter
 kotlin.text.StringsKt__StringsKt
@@ -8627,11 +8586,7 @@ androidx.recyclerview.widget.AsyncListDiffer$1
 com.blankj.utilcode.util.NetworkUtils$2
 androidx.lifecycle.ComputableLiveData$2
 com.zqw.mobile.easyai.mvp.model.api.AccountService:
-    public abstract io.reactivex.Observable validToken(com.jess.arms.cj.GsonRequest)
-    public abstract io.reactivex.Observable loginSMS(com.jess.arms.cj.GsonRequest)
-    public abstract io.reactivex.Observable quickLogin(com.jess.arms.cj.GsonRequest)
     public abstract io.reactivex.Observable download(java.lang.String)
-    public abstract io.reactivex.Observable getChatList(com.jess.arms.cj.GsonRequest)
     public abstract io.reactivex.Observable voiceToText(java.lang.String,okhttp3.MultipartBody$Part,java.util.Map)
     public abstract io.reactivex.Observable textToSpeech(java.lang.String,okhttp3.RequestBody)
 io.rx_cache2.internal.migration.GetPendingMigrations_Factory
@@ -8983,7 +8938,6 @@ androidx.constraintlayout.core.widgets.Optimizer:
     static final int FLAG_RECOMPUTE_BOUNDS
 androidx.constraintlayout.core.motion.utils.KeyCycleOscillator$CoreSpline
 com.jess.arms.mvp.IView:
-    public void showLoading()
     public void launchActivity(android.content.Intent)
     public void killMyself()
 kotlin.coroutines.intrinsics.IntrinsicsKt:
@@ -9397,8 +9351,6 @@ androidx.transition.SidePropagation:
     public void setPropagationSpeed(float)
 io.rx_cache2.internal.encrypt.BuiltInEncryptor
 androidx.constraintlayout.core.motion.utils.TypedBundle
-com.zqw.mobile.easyai.mvp.contract.SplashContract$Model:
-    public abstract io.reactivex.Observable validToken()
 app.dinus.com.loadingdrawable.DensityUtil
 androidx.constraintlayout.core.state.RegistryCallback
 androidx.core.view.LayoutInflaterFactory
@@ -9929,9 +9881,6 @@ com.alibaba.sdk.android.logger.BaseSdkLogApi:
 androidx.core.view.WindowInsetsAnimationCompat$Impl21$Impl21OnApplyWindowInsetsListener$1
 androidx.constraintlayout.motion.utils.ViewState:
     public void getState(android.view.View)
-com.zqw.mobile.easyai.mvp.contract.HomeContract$View:
-    public abstract void startLoadMore()
-    public abstract void noInfo()
 kotlin.collections.AbstractList
 androidx.appcompat.widget.ThemeUtils:
     public static android.content.res.ColorStateList createDisabledStateList(int,int)
@@ -11395,6 +11344,7 @@ androidx.core.text.PrecomputedTextCompat$Params:
 androidx.transition.FragmentTransitionSupport$4:
     public final synthetic androidx.transition.FragmentTransitionSupport this$0
 com.jess.arms.utils.DeviceUtils:
+    public void <init>()
     public static boolean GTE_HC
     public static boolean GTE_ICS
     public static boolean PRE_HC
@@ -11403,6 +11353,7 @@ com.jess.arms.utils.DeviceUtils:
     public static java.lang.Boolean _hasCamera
     public static java.lang.Boolean _isTablet
     public static java.lang.Integer _loadFactor
+    public static final synthetic boolean $assertionsDisabled
 com.zqw.mobile.easyai.mvp.ui.activity.AboutActivity_ViewBinding$1:
     public final synthetic com.zqw.mobile.easyai.mvp.ui.activity.AboutActivity_ViewBinding this$0
 androidx.appcompat.app.AppCompatDelegateImpl$ActionBarDrawableToggleImpl:

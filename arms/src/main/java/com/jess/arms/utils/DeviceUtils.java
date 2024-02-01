@@ -15,6 +15,7 @@
  */
 package com.jess.arms.utils;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -34,6 +35,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -43,6 +45,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -592,8 +596,33 @@ public class DeviceUtils {
     }
 
     public static String getIMEI(Context context) {
-        TelephonyManager tel = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return tel.getDeviceId();
+        String deviceId;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        {
+            deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        } else {
+            final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    return "";
+                }
+            }
+            assert mTelephony != null;
+            if (mTelephony.getDeviceId() != null)
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                {
+                    deviceId = mTelephony.getImei();
+                }else {
+                    deviceId = mTelephony.getDeviceId();
+                }
+            } else {
+                deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            }
+        }
+        Log.d("deviceId", deviceId);
+        return deviceId;
     }
 
     public static String getPhoneType() {

@@ -52,12 +52,12 @@ android {
 
         ndk {
             // 设置支持的SO库架构(百度地图)
-//          abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
-            abiFilters 'armeabi-v7a'
+          abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//            abiFilters 'armeabi-v7a'
         }
 
         //是否使用本地测试数据
-        buildConfigField "boolean", "IS_DEBUG_DATA", "true"
+        buildConfigField "boolean", "IS_DEBUG_DATA", "false"
 
         //使MultiDex支持
         multiDexEnabled true
@@ -113,7 +113,7 @@ android {
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://xdll.buypb.cn/OperateApp/\""
 //            buildConfigField "String", "SERVER_URL_VALUE", "\"http://192.168.0.54:6889/\""
             // 路由侠
-            buildConfigField "String", "SERVER_URL_VALUE", "\"http://pb.szjltscm.cn/RecycleOrgApp/\""
+            buildConfigField "String", "SERVER_URL_VALUE", "\"http://zhll99i.e2.luyouxia.net:22780/\""
 
             // AndroidManifest中用到的配置
             manifestPlaceholders = [APP_NAME         : "@string/app_name_debug"

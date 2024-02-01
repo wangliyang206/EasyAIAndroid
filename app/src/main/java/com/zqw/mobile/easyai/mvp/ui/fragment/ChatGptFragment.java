@@ -144,8 +144,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
     }
 
     public static ChatGptFragment newInstance() {
-        ChatGptFragment fragment = new ChatGptFragment();
-        return fragment;
+        return new ChatGptFragment();
     }
 
     @Override
