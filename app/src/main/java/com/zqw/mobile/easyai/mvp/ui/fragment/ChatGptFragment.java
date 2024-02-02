@@ -124,6 +124,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
     // 是否自动播放语音(默认自动播放)
     private boolean isHorn = true;
 
+
     @Override
     public void onDestroy() {
         // 如果之前调用过myRecognizer.loadOfflineEngine()， release()里会自动调用释放离线资源
@@ -199,17 +200,24 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
         });
 
         // 初始化语音识别
-        apiParams = new OnlineRecogParams();
-        apiParams.initSamplePath(getContext());
-        // 基于DEMO集成第1.1, 1.2, 1.3 步骤 初始化EventManager类并注册自定义输出事件
-        // DEMO集成步骤 1.2 新建一个回调类，识别引擎会回调这个类告知重要状态和识别结果
-        IRecogListener listener = new MessageStatusRecogListener(handler);
-        // DEMO集成步骤 1.1 1.3 初始化：new一个IRecogListener示例 & new 一个 MyRecognizer 示例,并注册输出事件
-        myRecognizer = new MyRecognizer(getContext(), listener);
+        if (apiParams == null) {
+            apiParams = new OnlineRecogParams();
+            apiParams.initSamplePath(getContext());
+        }
+
+        if (myRecognizer == null) {
+            // 基于DEMO集成第1.1, 1.2, 1.3 步骤 初始化EventManager类并注册自定义输出事件
+            // DEMO集成步骤 1.2 新建一个回调类，识别引擎会回调这个类告知重要状态和识别结果
+            IRecogListener listener = new MessageStatusRecogListener(handler);
+            // DEMO集成步骤 1.1 1.3 初始化：new一个IRecogListener示例 & new 一个 MyRecognizer 示例,并注册输出事件
+            myRecognizer = new MyRecognizer(getContext(), listener);
+        }
 
         // 初始化语音播报
-        synthActivity = new SynthActivity();
-        synthActivity.initTTS(getContext());
+        if (synthActivity == null) {
+            synthActivity = new SynthActivity();
+            synthActivity.initTTS(getContext());
+        }
 
         mScrollView.post(() -> {
             // 请求网络
@@ -378,7 +386,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
         // 添加一条消息
         addLeftMsg(tips);
         // 播放语音
-        onVoiceAnnouncements(tips);
+//        onVoiceAnnouncements(tips);
     }
 
     /**

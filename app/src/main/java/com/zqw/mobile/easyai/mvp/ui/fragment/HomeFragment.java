@@ -27,6 +27,8 @@ import com.zqw.mobile.easyai.mvp.presenter.HomePresenter;
 import com.zqw.mobile.easyai.mvp.ui.activity.GeneralAssistantActivity;
 import com.zqw.mobile.easyai.mvp.ui.adapter.HomeAdapter;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -221,4 +223,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         checkNotNull(message);
         ArmsUtils.snackbarText(message);
     }
+
+    /**
+     * 接收已选择的图片
+     */
+    public void onResultImage(ArrayList<String> mImg) {
+
+    }
+
 }

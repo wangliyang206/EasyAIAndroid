@@ -523,6 +523,7 @@ com.zqw.mobile.easyai.mvp.ui.fragment.HomeFragment:
     public static com.zqw.mobile.easyai.mvp.ui.fragment.HomeFragment newInstance()
     public void setData(java.lang.Object)
     public androidx.fragment.app.Fragment getFragment()
+    public void onResultImage(java.util.ArrayList)
 androidx.transition.ViewGroupUtils:
     private void <init>()
 kotlin.coroutines.experimental.Continuation

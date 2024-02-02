@@ -27,6 +27,7 @@ import com.zqw.mobile.easyai.mvp.contract.MainContract;
 import com.zqw.mobile.easyai.mvp.model.entity.AppUpdate;
 import com.zqw.mobile.easyai.mvp.presenter.MainPresenter;
 import com.zqw.mobile.easyai.mvp.ui.fragment.ChatGptFragment;
+import com.zqw.mobile.easyai.mvp.ui.fragment.HomeFragment;
 import com.zqw.mobile.easyai.mvp.ui.fragment.MyFragment;
 
 import javax.inject.Inject;

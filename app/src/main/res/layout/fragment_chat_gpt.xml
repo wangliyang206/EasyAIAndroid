@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <!-- 首页 -->
@@ -13,6 +12,7 @@
         android:id="@+id/view_chatgpt_top"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="首页"
         android:textColor="@color/common_text_color"
@@ -152,5 +152,6 @@
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
