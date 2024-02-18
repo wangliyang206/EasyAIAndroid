@@ -11,7 +11,7 @@
 
     <!--启动界面主题-->
     <style name="SplashTheme" parent="Theme.AppCompat.Light">
-        <item name="android:windowBackground">@mipmap/welcome</item>
+        <item name="android:windowBackground">@drawable/layer_launch2</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="windowActionBar">false</item>

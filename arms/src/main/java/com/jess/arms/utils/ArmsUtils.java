@@ -32,6 +32,10 @@ import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.jess.arms.base.App;
 import com.jess.arms.di.component.AppComponent;
@@ -41,10 +45,6 @@ import com.jess.arms.widget.etoast2.Toast;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * ================================================
@@ -237,11 +237,14 @@ public class ArmsUtils {
      */
     @SuppressLint("ShowToast")
     public static void makeText(Context context, String string) {
-        if (mToast == null) {
-            mToast = Toast.makeText(context, string, EToast2.LENGTH_SHORT);
+        try {
+            if (mToast == null) {
+                mToast = Toast.makeText(context, string, EToast2.LENGTH_SHORT);
+            }
+            mToast.setText(string);
+            mToast.show();
+        } catch (Exception ignored) {
         }
-        mToast.setText(string);
-        mToast.show();
     }
 
     /**

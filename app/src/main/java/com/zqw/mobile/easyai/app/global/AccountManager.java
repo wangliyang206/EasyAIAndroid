@@ -70,6 +70,7 @@ public final class AccountManager {
      */
     private static final String PRIVACY_POLICY = "privacyPolicy";
     private static final String FASTGPT_SK = "FastGPT_SK";
+    private static final String FASTGPT_TOKEN = "FastGPT_Token";
     /*----------------------------------------------操作对象-------------------------------------------------*/
 
     private AppPreferencesHelper spHelper;
@@ -399,10 +400,22 @@ public final class AccountManager {
     public String getFastGptSk() {
         return spHelper.getPref(FASTGPT_SK, Constant.CHATGPT_KEY);
     }
+
     /**
      * 设置FastGPT API令牌
      */
     public void setFastGptSk(String sk) {
         spHelper.put(FASTGPT_SK, sk);
+    }
+
+    /**
+     * 获取FastGPT Token
+     */
+    public String getFastGptToken() {
+        return spHelper.getPref(FASTGPT_TOKEN, "");
+    }
+
+    public void saveFastGptToken(String token) {
+        spHelper.put(FASTGPT_TOKEN, token);
     }
 }

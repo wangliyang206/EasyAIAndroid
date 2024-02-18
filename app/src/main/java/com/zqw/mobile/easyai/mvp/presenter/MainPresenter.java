@@ -11,6 +11,7 @@ import com.zqw.mobile.easyai.app.global.AccountManager;
 import com.zqw.mobile.easyai.app.utils.RxUtils;
 import com.zqw.mobile.easyai.mvp.contract.MainContract;
 import com.zqw.mobile.easyai.mvp.model.entity.AppUpdate;
+import com.zqw.mobile.easyai.mvp.model.entity.LoginFastGptResponse;
 
 import javax.inject.Inject;
 
@@ -50,6 +51,30 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
         // APP升级更新
         if (mAccountManager.getUpgrade())
             checkUpdateManager();
+
+        // 获取FastGPT登录Token
+        logiFastGpt();
+    }
+
+    /**
+     * FastGPT登录
+     */
+    private void logiFastGpt() {
+        mModel.logiFastGpt("root", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4")
+                .compose(RxUtils.applySchedulers(mRootView, true, true))     // 切换线程
+                .subscribe(new ErrorHandleSubscriber<LoginFastGptResponse>(mErrorHandler) {
+                    @Override
+                    public void onError(Throwable t) {
+                        // 不做任何处理
+                    }
+
+                    @Override
+                    public void onNext(LoginFastGptResponse response) {
+                        if (response.getCode() == 200) {
+                            mAccountManager.saveFastGptToken(response.getData().getToken());
+                        }
+                    }
+                });
     }
 
     /**

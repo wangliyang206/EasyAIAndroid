@@ -6,6 +6,7 @@ import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.CommonResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.HomeChatResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.ImageUploadResponse;
+import com.zqw.mobile.easyai.mvp.model.entity.LoginFastGptResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.LoginResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.WhisperResponse;
 
@@ -64,6 +65,9 @@ public interface AccountService {
     @POST("fileUploadController/uploadFiles")
     Observable<GsonResponse<ImageUploadResponse>> uploadChatFiles(@Part List<MultipartBody.Part> file);
     /*-----------------------------------------------------------------------GPT-----------------------------------------------------------------------*/
+    // fastGPT 登录
+    @POST()
+    Observable<LoginFastGptResponse> loginFastGpt(@Url String Url, @Body RequestBody params);
 
     // chatGPT 获取历史记录
     @GET()

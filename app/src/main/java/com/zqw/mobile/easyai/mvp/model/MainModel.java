@@ -4,9 +4,12 @@ import com.jess.arms.cj.ApiOperator;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
+import com.zqw.mobile.easyai.app.global.Constant;
 import com.zqw.mobile.easyai.mvp.contract.MainContract;
+import com.zqw.mobile.easyai.mvp.model.api.AccountService;
 import com.zqw.mobile.easyai.mvp.model.api.SystemService;
 import com.zqw.mobile.easyai.mvp.model.entity.AppUpdate;
+import com.zqw.mobile.easyai.mvp.model.entity.LoginFastGptResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +17,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * ================================================
@@ -36,6 +41,16 @@ public class MainModel extends BaseModel implements MainContract.Model {
     public void onDestroy() {
         super.onDestroy();
         this.apiOperator = null;
+    }
+
+    @Override
+    public Observable<LoginFastGptResponse> logiFastGpt(String username, String password) {
+        String text = "{" +
+                "\"username\": \"" + username + "\"," +
+                "\"password\": \"" + password + "\"" +
+                "}";
+        RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), text);
+        return mRepositoryManager.obtainRetrofitService(AccountService.class).loginFastGpt(Constant.FASTGPT_TOKEN,requestBodyJson);
     }
 
     @Override

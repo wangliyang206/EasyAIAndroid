@@ -83,9 +83,13 @@ public interface Constant {
      */
     String FASTGPT_CHAT_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/chat/completions";
     /**
+     * FastGPT 登录
+     */
+    String FASTGPT_TOKEN = "http://yunguichu.e2.luyouxia.net:22172/api/support/user/account/loginByPassword";
+    /**
      * 获取历史记录
      */
-    String FASTGPT_HISTORY_URL = "http://yunguichu.e2.luyouxia.net:22172/api/v1/chat/history";
+    String FASTGPT_HISTORY_URL = "http://yunguichu.e2.luyouxia.net:22172/api/core/chat/init";
     /**
      * 语音转文字
      */
