@@ -61,7 +61,7 @@ public class ChatGptModel extends BaseModel implements ChatGptContract.Model {
 
     @Override
     public Observable<ChatHistoryResponse> getChatHistory() {
-        String addItems = "?appId=" + Constant.FASTGPT_APPID + "&chatId=GrainFullApp";
+        String addItems = "?appId=" + Constant.FASTGPT_APPID + "&chatId=EasyAIApp";
         return mRepositoryManager.obtainRetrofitService(AccountService.class).getChatHistory(Constant.FASTGPT_HISTORY_URL + addItems);
     }
 
@@ -100,7 +100,7 @@ public class ChatGptModel extends BaseModel implements ChatGptContract.Model {
     @Override
     public Observable<ResponseBody> chatCreate(String message) {
         // 转换成Json
-        message = "{\"chatId\": \"GrainFullApp\", " +
+        message = "{\"chatId\": \"EasyAIApp\", " +
                 "\"messages\": [{\"role\": \"user\", \"content\":  \"" + message + "\"}] , " +
                 "\"stream\" : true," + "\"detail\" : false}";
         RequestBody requestBodyJson = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), message);
@@ -116,7 +116,7 @@ public class ChatGptModel extends BaseModel implements ChatGptContract.Model {
 
         // 封装数据
         GptChat mGptChat = new GptChat();
-        mGptChat.setChatId("GrainFullApp");
+        mGptChat.setChatId("EasyAIApp");
         mGptChat.setMessages(messages);
         mGptChat.setStream(true);
 
