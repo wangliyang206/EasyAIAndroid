@@ -448,8 +448,11 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
         });
     }
 
-    // 用于显示对话信息
+    /**
+     * 属性用于对话过程中显示
+     */
     private String msg = "";
+
     /**
      * 加载聊天消息
      */
