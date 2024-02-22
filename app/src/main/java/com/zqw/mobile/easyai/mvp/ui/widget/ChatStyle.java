@@ -162,8 +162,8 @@ public class ChatStyle implements StyleSheet {
         addRule(".hljs-strong", "font-weight: bold");
 
         // 自定义
-//        addRule("html", "background-color:#ADD8E6","width: fit-content");
-        addRule("body", "line-height: 1.6", "padding: 10px");
+        addRule("html", "height: auto", "position: fixed", "background-color:#ADD8E6");
+        addRule("body", "line-height: 1.6", "padding: 10px", "height: auto", "display: inline-block");
         addRule(".scrollup", "width: 55px", "height: 55px", "position: fixed", "bottom: 15px", "right: 15px", "visibility: hidden", "display: flex", "align-items: center", "justify-content: center", "margin: 0 !important", "line-height: 70px", "box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28)", "border-radius: 50%", "color: #fff", "padding: 5px", "background-color: #00BF4C");
 
         addRule("h1", "font-size: 28px");

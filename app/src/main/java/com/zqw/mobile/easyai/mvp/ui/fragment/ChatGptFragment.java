@@ -51,6 +51,7 @@ import com.zqw.mobile.easyai.app.tts.SynthActivity;
 import com.zqw.mobile.easyai.app.utils.CommonUtils;
 import com.zqw.mobile.easyai.app.utils.GlideLoader;
 import com.zqw.mobile.easyai.app.utils.MediaStoreUtils;
+import com.zqw.mobile.easyai.app.utils.RxUtils;
 import com.zqw.mobile.easyai.di.component.DaggerChatGptComponent;
 import com.zqw.mobile.easyai.mvp.contract.ChatGptContract;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryInfo;
@@ -371,7 +372,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
-        // 默认显示方式
+
         txviReceiveMsg.addStyleSheet(new ChatStyle());
         txviReceiveMsg.loadMarkdown(text);
 
@@ -410,8 +411,25 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
         }
 
         // 滑动到底部
-        mScrollView.post(() -> {
-            mScrollView.fullScroll(View.FOCUS_DOWN);
+        RxUtils.startDelayed(1, this, () -> {
+            // 完整滚动
+//            mScrollView.fullScroll(View.FOCUS_DOWN);
+
+            // 立即滚动到底部
+            mScrollView.post(() -> {
+                // 获取最后一个子视图的底部位置
+                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+                // 设置NestedScrollView滚动到最底部
+                mScrollView.scrollTo(0, bottom);
+            });
+
+            // 平滑滚动到底部
+//            mScrollView.post(() -> {
+//                // 获取最后一个子视图的底部位置
+//                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+//                // 设置NestedScrollView平滑滚动到最底部
+//                mScrollView.smoothScrollTo(0, bottom);
+//            });
         });
     }
 
@@ -426,16 +444,18 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
 
             // response返回拼接
             txviReceiveMsg.loadMarkdown(info.toString());
+            onSucc();
         });
     }
 
+    // 用于显示对话信息
+    private String msg = "";
     /**
      * 加载聊天消息
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
-        txviReceiveMsg.loadMarkdown("");
-
+        msg = "";
         // 开启线程处理(流式展示)
         new Thread(() -> {
             for (int i = 0; i < info.length(); i++) {
@@ -449,9 +469,10 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
                 getActivity().runOnUiThread(() -> {
                     imviReceiveMsg.setVisibility(View.GONE);
                     txviReceiveMsg.setVisibility(View.VISIBLE);
-
+                    msg = msg + mChar;
                     // response返回拼接
-                    txviReceiveMsg.loadMarkdown(String.valueOf(mChar));
+                    txviReceiveMsg.loadMarkdown(msg);
+                    onSucc();
                 });
             }
         }).start();
@@ -511,7 +532,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
      */
     @Override
     public void onSucc() {
-        getActivity().runOnUiThread(() -> {
+        RxUtils.startDelayed(1, this, () -> {
             mScrollView.fullScroll(View.FOCUS_DOWN);
             // 清空图片，隐藏布局
             mImagePaths.clear();

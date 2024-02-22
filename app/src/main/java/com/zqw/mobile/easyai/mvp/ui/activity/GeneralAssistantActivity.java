@@ -1,13 +1,9 @@
 package com.zqw.mobile.easyai.mvp.ui.activity;
 
+import static com.jess.arms.utils.Preconditions.checkNotNull;
+
 import android.Manifest;
 import android.app.Activity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,6 +23,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+
 import com.baidu.aip.asrwakeup3.core.inputstream.InFileStream;
 import com.baidu.aip.asrwakeup3.core.mini.AutoCheck;
 import com.baidu.aip.asrwakeup3.core.recog.IStatus;
@@ -38,16 +39,14 @@ import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
-
-import static com.jess.arms.utils.Preconditions.checkNotNull;
-
 import com.lcw.library.imagepicker.ImagePicker;
 import com.zqw.mobile.easyai.BuildConfig;
+import com.zqw.mobile.easyai.R;
 import com.zqw.mobile.easyai.app.dialog.PopupFastGptIntro;
 import com.zqw.mobile.easyai.app.global.AccountManager;
 import com.zqw.mobile.easyai.app.global.Constant;
@@ -55,12 +54,13 @@ import com.zqw.mobile.easyai.app.tts.SynthActivity;
 import com.zqw.mobile.easyai.app.utils.CommonUtils;
 import com.zqw.mobile.easyai.app.utils.GlideLoader;
 import com.zqw.mobile.easyai.app.utils.MediaStoreUtils;
+import com.zqw.mobile.easyai.app.utils.RxUtils;
 import com.zqw.mobile.easyai.di.component.DaggerGeneralAssistantComponent;
 import com.zqw.mobile.easyai.mvp.contract.GeneralAssistantContract;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.easyai.mvp.presenter.GeneralAssistantPresenter;
-import com.zqw.mobile.easyai.R;
 import com.zqw.mobile.easyai.mvp.ui.widget.AudioRecorderButton;
+import com.zqw.mobile.easyai.mvp.ui.widget.ChatStyle;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -69,6 +69,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import br.tiagohm.markdownview.MarkdownView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
@@ -108,7 +109,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
     ImageView imviAttachment;
 
     // 接收的消息
-    private TextView txviReceiveMsg;
+    private MarkdownView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
     @Inject
@@ -200,20 +201,28 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
             }
         });
 
-        mPopup = new PopupFastGptIntro(getApplicationContext());
+        if (mPopup == null)
+            mPopup = new PopupFastGptIntro(getApplicationContext());
 
         // 初始化语音识别
-        apiParams = new OnlineRecogParams();
-        apiParams.initSamplePath(this);
-        // 基于DEMO集成第1.1, 1.2, 1.3 步骤 初始化EventManager类并注册自定义输出事件
-        // DEMO集成步骤 1.2 新建一个回调类，识别引擎会回调这个类告知重要状态和识别结果
-        IRecogListener listener = new MessageStatusRecogListener(handler);
-        // DEMO集成步骤 1.1 1.3 初始化：new一个IRecogListener示例 & new 一个 MyRecognizer 示例,并注册输出事件
-        myRecognizer = new MyRecognizer(this, listener);
+        if (apiParams == null) {
+            apiParams = new OnlineRecogParams();
+            apiParams.initSamplePath(this);
+        }
+
+        if (myRecognizer == null) {
+            // 基于DEMO集成第1.1, 1.2, 1.3 步骤 初始化EventManager类并注册自定义输出事件
+            // DEMO集成步骤 1.2 新建一个回调类，识别引擎会回调这个类告知重要状态和识别结果
+            IRecogListener listener = new MessageStatusRecogListener(handler);
+            // DEMO集成步骤 1.1 1.3 初始化：new一个IRecogListener示例 & new 一个 MyRecognizer 示例,并注册输出事件
+            myRecognizer = new MyRecognizer(this, listener);
+        }
 
         // 初始化语音播报
-        synthActivity = new SynthActivity();
-        synthActivity.initTTS(getApplicationContext());
+        if (synthActivity == null) {
+            synthActivity = new SynthActivity();
+            synthActivity.initTTS(getApplicationContext());
+        }
 
         mScrollView.post(() -> {
             // 请求网络
@@ -362,8 +371,11 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
         LinearLayout viewLeftMsg = LayoutInflater.from(this).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
-        txviReceiveMsg.setText(text);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
+
+        txviReceiveMsg.addStyleSheet(new ChatStyle());
+        txviReceiveMsg.loadMarkdown(text);
+
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
@@ -379,7 +391,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
         // 添加一条消息
         addLeftMsg(tips);
         // 播放语音
-        onVoiceAnnouncements(tips);
+//        onVoiceAnnouncements(tips);
     }
 
     /**
@@ -399,8 +411,25 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
         }
 
         // 滑动到底部
-        mScrollView.post(() -> {
-            mScrollView.fullScroll(View.FOCUS_DOWN);
+        RxUtils.startDelayed(1, this, () -> {
+            // 完整滚动
+//            mScrollView.fullScroll(View.FOCUS_DOWN);
+
+            // 立即滚动到底部
+            mScrollView.post(() -> {
+                // 获取最后一个子视图的底部位置
+                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+                // 设置NestedScrollView滚动到最底部
+                mScrollView.scrollTo(0, bottom);
+            });
+
+            // 平滑滚动到底部
+//            mScrollView.post(() -> {
+//                // 获取最后一个子视图的底部位置
+//                int bottom = mScrollView.getChildAt(mScrollView.getChildCount() - 1).getBottom();
+//                // 设置NestedScrollView平滑滚动到最底部
+//                mScrollView.smoothScrollTo(0, bottom);
+//            });
         });
     }
 
@@ -414,17 +443,20 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
-            txviReceiveMsg.setText(info.toString());
+            txviReceiveMsg.loadMarkdown(info.toString());
+            onSucc();
         });
     }
+
+    // 用于显示对话信息
+    private String msg = "";
 
     /**
      * 加载聊天消息
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
-        txviReceiveMsg.setText("");
-
+        msg = "";
         // 开启线程处理(流式展示)
         new Thread(() -> {
             for (int i = 0; i < info.length(); i++) {
@@ -435,12 +467,13 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
                 } catch (Exception ignored) {
                 }
 
-                runOnUiThread(() -> {
+                getActivity().runOnUiThread(() -> {
                     imviReceiveMsg.setVisibility(View.GONE);
                     txviReceiveMsg.setVisibility(View.VISIBLE);
-
+                    msg = msg + mChar;
                     // response返回拼接
-                    txviReceiveMsg.append(String.valueOf(mChar));
+                    txviReceiveMsg.loadMarkdown(msg);
+                    onSucc();
                 });
             }
         }).start();
@@ -500,7 +533,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
      */
     @Override
     public void onSucc() {
-        runOnUiThread(() -> {
+        RxUtils.startDelayed(1, this, () -> {
             mScrollView.fullScroll(View.FOCUS_DOWN);
             // 清空图片，隐藏布局
             mImagePaths.clear();

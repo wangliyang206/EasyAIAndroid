@@ -1,26 +1,11 @@
 package com.zqw.mobile.easyai.mvp.presenter;
 
-import android.app.Application;
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.TimeUtils;
 import com.google.gson.Gson;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.jess.arms.http.imageloader.ImageLoader;
-
-import io.reactivex.ObservableSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
-import okhttp3.ResponseBody;
-import timber.log.Timber;
-
-import javax.inject.Inject;
-
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.zqw.mobile.easyai.app.config.CommonRetryWithDelay;
 import com.zqw.mobile.easyai.app.global.AccountManager;
@@ -42,6 +27,17 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
+import okhttp3.ResponseBody;
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -185,6 +181,7 @@ public class ChatGptPresenter extends BasePresenter<ChatGptContract.Model, ChatG
 
     /**
      * 多模型会话
+     *
      * @param message        聊天文字对话
      * @param isNetworkImage 是否为网络图片：true代表前缀是http；false代表为本地图片
      * @param imageUrl       图片路径
@@ -307,7 +304,6 @@ public class ChatGptPresenter extends BasePresenter<ChatGptContract.Model, ChatG
             mRootView.onLoadMessage(buffer);
             // 语音播报
             mRootView.onVoiceAnnouncements(buffer.toString());
-            mRootView.onSucc();
 
             Timber.d("onResult: %s", buffer.toString());
         } catch (Exception ignored) {
