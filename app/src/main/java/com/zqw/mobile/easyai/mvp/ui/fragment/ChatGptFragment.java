@@ -56,6 +56,7 @@ import com.zqw.mobile.easyai.mvp.contract.ChatGptContract;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.easyai.mvp.presenter.ChatGptPresenter;
 import com.zqw.mobile.easyai.mvp.ui.widget.AudioRecorderButton;
+import com.zqw.mobile.easyai.mvp.ui.widget.ChatStyle;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import br.tiagohm.markdownview.MarkdownView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import permissions.dispatcher.NeedsPermission;
@@ -103,7 +105,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
     ImageView imviAttachment;
 
     // 接收的消息
-    private TextView txviReceiveMsg;
+    private MarkdownView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
     @Inject
@@ -123,7 +125,6 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
     private String mVoicePath;
     // 是否自动播放语音(默认自动播放)
     private boolean isHorn = true;
-
 
     @Override
     public void onDestroy() {
@@ -369,8 +370,11 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
         LinearLayout viewLeftMsg = LayoutInflater.from(getContext()).inflate(R.layout.fastgpt_left_textview, null).findViewById(R.id.fastgpt_left_layout);
 
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
-        txviReceiveMsg.setText(text);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
+        // 默认显示方式
+        txviReceiveMsg.addStyleSheet(new ChatStyle());
+        txviReceiveMsg.loadMarkdown(text);
+
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
@@ -421,7 +425,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
-            txviReceiveMsg.setText(info.toString());
+            txviReceiveMsg.loadMarkdown(info.toString());
         });
     }
 
@@ -430,7 +434,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
      */
     @Override
     public void onLoadMessage(StringBuffer info) {
-        txviReceiveMsg.setText("");
+        txviReceiveMsg.loadMarkdown("");
 
         // 开启线程处理(流式展示)
         new Thread(() -> {
@@ -447,7 +451,7 @@ public class ChatGptFragment extends BaseFragment<ChatGptPresenter> implements C
                     txviReceiveMsg.setVisibility(View.VISIBLE);
 
                     // response返回拼接
-                    txviReceiveMsg.append(String.valueOf(mChar));
+                    txviReceiveMsg.loadMarkdown(String.valueOf(mChar));
                 });
             }
         }).start();

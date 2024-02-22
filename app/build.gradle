@@ -305,4 +305,11 @@ dependencies {
     implementation 'top.zibin:Luban:1.1.8'
     // 自定义圆形图片控件(https://github.com/hdodenhof/CircleImageView)
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    // Markdown 渲染库
+//    implementation 'com.github.mukeshsolanki:MarkdownView-Android:1.1.1'
+//    implementation 'io.noties.markwon:core:4.6.2'
+
+    //MarkdownView：https://github.com/tiagohm/MarkdownView
+    implementation 'com.github.tiagohm.MarkdownView:library:0.19.0'
+    implementation 'com.github.tiagohm.MarkdownView:emoji:0.19.0'
 }
