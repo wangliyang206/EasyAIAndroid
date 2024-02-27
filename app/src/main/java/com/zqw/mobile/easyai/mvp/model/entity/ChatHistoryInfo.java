@@ -9,6 +9,14 @@ package com.zqw.mobile.easyai.mvp.model.entity;
  * @CreateDate: 2023/12/7 16:28
  */
 public class ChatHistoryInfo {
+    public ChatHistoryInfo() {
+    }
+
+    public ChatHistoryInfo(String obj, String value) {
+        this.obj = obj;
+        this.value = value;
+    }
+
     // 会话id
     private String _id;
     // 数据id

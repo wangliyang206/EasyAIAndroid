@@ -1,5 +1,7 @@
 package com.zqw.mobile.easyai.mvp.presenter;
 
+import static com.zqw.mobile.easyai.BuildConfig.IS_DEBUG_DATA;
+
 import android.text.TextUtils;
 
 import com.blankj.utilcode.util.TimeUtils;
@@ -13,6 +15,7 @@ import com.zqw.mobile.easyai.app.utils.CommonUtils;
 import com.zqw.mobile.easyai.app.utils.MediaStoreUtils;
 import com.zqw.mobile.easyai.mvp.contract.GeneralAssistantContract;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatCompletionChunk;
+import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryResponse;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatInputs;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatUserGuideModule;
@@ -79,55 +82,106 @@ public class GeneralAssistantPresenter extends BasePresenter<GeneralAssistantCon
      * 获取对话日志
      */
     public void getChatHistory() {
-        mModel.getChatHistory()
-                .subscribeOn(Schedulers.io())
-                .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
-                .doOnSubscribe(disposable -> {
+        if (IS_DEBUG_DATA) {
+            List<ChatHistoryInfo> history = new ArrayList<>();
+            history.add(new ChatHistoryInfo("Human", "你好"));
+            history.add(new ChatHistoryInfo("AI", "你好！有什么可以帮助你的吗？"));
+            history.add(new ChatHistoryInfo("Human", "统计三年级一班所有学生的分数，以表格形式呈现，并计算平均分"));
+            history.add(new ChatHistoryInfo("AI", "| 学生姓名 | 分数 |\n" +
+                    "|---------|------|\n" +
+                    "| 小明    | 85   |\n" +
+                    "| 小红    | 78   |\n" +
+                    "| 小刚    | 92   |\n" +
+                    "| 小美    | 88   |\n" +
+                    "| 小华    | 79   |\n" +
+                    "| 小强    | 87   |\n" +
+                    "| 小丽    | 90   |\n" +
+                    "| 小亮    | 84   |\n" +
+                    "| 小娟    | 86   |\n" +
+                    "| 小杰    | 83   |\n" +
+                    "\n" +
+                    "平均分 = (85 + 78 + 92 + 88 + 79 + 87 + 90 + 84 + 86 + 83) / 10 = 85.2\n" +
+                    "\n" +
+                    "三年级一班所有学生的平均分为85.2。"));
+            history.add(new ChatHistoryInfo("Human", "统计三年级一班所有学生的分数，以表格形式呈现，并计算平均分"));
+            history.add(new ChatHistoryInfo("AI", "| 学生姓名 | 语文 | 数学 | 英语 | 总分 |\n" +
+                    "|---------|------|------|------|------|\n" +
+                    "| 宋江    | 81   | 72   | 79   | 232  |\n" +
+                    "| 吴用    | 61   | 95   | 55   | 211  |\n" +
+                    "| 关胜    | 85   | 74   | 81   | 240  |\n" +
+                    "| 林冲    | 88   | 55   | 81   | 224  |\n" +
+                    "\n" +
+                    "平均分 = (232 + 211 + 240 + 224) / 4 = 226.75\n" +
+                    "\n" +
+                    "三年级一班所有学生的平均总分为226.75。"));
+            history.add(new ChatHistoryInfo("Human", "统计三年级一班所有学生的分数，以表格形式呈现，并计算平均分"));
+            history.add(new ChatHistoryInfo("AI", "| 姓名   | 语文 | 数学 | 英语 | 总分 |\n" +
+                    "|--------|------|------|------|------|\n" +
+                    "| 宋江   | 81   | 72   | 79   | 232  |\n" +
+                    "| 吴用   | 61   | 95   | 55   | 211  |\n" +
+                    "| 关胜   | 85   | 74   | 81   | 240  |\n" +
+                    "| 林冲   | 88   | 55   | 81   | 224  |\n" +
+                    "\n" +
+                    "平均分：227.5"));
+            history.add(new ChatHistoryInfo("Human", "帮我画一张，在飞的狗狗"));
+            history.add(new ChatHistoryInfo("AI", "![以上是人工智能通过AI生成的图片](https://oaidalleapiprodscus.blob.core.windows.net/private/org-1iqH1Bh54QUDT3HBrnR1IqVG/user-JsHOx2vukiGe1tj4lFxqiELV/img-lSfV88B5NwEJrljVOZcFH4tw.png?st=2024-02-27T07%3A56%3A12Z&se=2024-02-27T09%3A56%3A12Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2024-02-27T03%3A16%3A15Z&ske=2024-02-28T03%3A16%3A15Z&sks=b&skv=2021-08-06&sig=E2rzQmA/tX7nEFXYwCslV6JkIQiuWM6zDY5DVHbeQMM%3D)"));
+            history.add(new ChatHistoryInfo("Human", "帮我画一只狗狗"));
+            history.add(new ChatHistoryInfo("AI", "![以上是人工智能通过AI生成的图片](https://p6.itc.cn/q_70/images03/20230404/9f0538707d0646ea9e23d34ab790ef31.png)"));
+            history.add(new ChatHistoryInfo("Human", "易收网是做什么的？"));
+            history.add(new ChatHistoryInfo("AI", "山东易收网的经营范围包括数字文化创意软件开发、数据处理和存储支持服务、软件开发、计算机系统服务、网络技术服务、大数据服务、互联网数据服务、技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广、信息技术咨询服务、信息咨询服务、物联网技术研发、供应链管理服务、互联网销售、电子产品销售、电动自行车销售、电池销售、摩托车及零配件批发、五金产品批发、国内贸易代理、环保咨询服务、会议及展览服务、广告设计、代理、普通货物仓储服务、总质量4.5吨及以下普通货运车辆道路货物运输、高性能有色金属及合金材料销售。"));
+
+            mRootView.onLoadHistory(getOpeningRemarks(null), history);
+        } else {
+            mModel.getChatHistory()
+                    .subscribeOn(Schedulers.io())
+                    .retryWhen(new CommonRetryWithDelay(0, 2))             // 遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                    .doOnSubscribe(disposable -> {
 //                    mRootView.showLoadingSubmit();                                                  // 显示进度条
-                })
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doFinally(() -> {
+                    })
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doFinally(() -> {
 //                    mRootView.hideLoadingSubmit();                                                  // 隐藏进度条
-                }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(new ErrorHandleSubscriber<ChatHistoryResponse>(mErrorHandler) {
-                    @Override
-                    public void onError(Throwable t) {
-                        Timber.i("##### t=%s", t.getMessage());
-                        mRootView.onLoadOpeningRemarks(mDefaultTips);
-                    }
-
-                    @Override
-                    public void onNext(ChatHistoryResponse info) {
-                        Timber.i("##### getChatHistory------------【Start】-------------");
-
-                        Timber.i("##### onNext Code=%s", info.getCode());
-                        try {
-                            Timber.i("##### onNext History=%s", info.getData().getHistory().size());
-                            if (info.getCode() == 200) {
-                                // 拿到开场白
-                                ChatUserGuideModule mChatUserGuideModule = info.getData().getApp().getUserGuideModule();
-
-                                // 判断是否有历史记录
-                                if (CommonUtils.isNotEmpty(info.getData().getHistory())) {
-                                    // 有历史记录
-                                    mRootView.onLoadHistory(getOpeningRemarks(mChatUserGuideModule), info.getData().getHistory());
-                                } else {
-                                    // 没有历史记录，单独加载 提示语
-                                    mRootView.onLoadOpeningRemarks(getOpeningRemarks(mChatUserGuideModule));
-                                }
-
-                            } else {
-                                mRootView.onLoadOpeningRemarks(mDefaultTips);
-                            }
-                        } catch (Exception ex) {
-                            Timber.i("##### getChatHistory error=%s", ex.getMessage());
+                    }).compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                    .subscribe(new ErrorHandleSubscriber<ChatHistoryResponse>(mErrorHandler) {
+                        @Override
+                        public void onError(Throwable t) {
+                            Timber.i("##### t=%s", t.getMessage());
                             mRootView.onLoadOpeningRemarks(mDefaultTips);
                         }
 
-                        Timber.i("##### getChatHistory------------【End】-------------");
-                    }
-                });
+                        @Override
+                        public void onNext(ChatHistoryResponse info) {
+                            Timber.i("##### getChatHistory------------【Start】-------------");
+
+                            Timber.i("##### onNext Code=%s", info.getCode());
+                            try {
+                                Timber.i("##### onNext History=%s", info.getData().getHistory().size());
+                                if (info.getCode() == 200) {
+                                    // 拿到开场白
+                                    ChatUserGuideModule mChatUserGuideModule = info.getData().getApp().getUserGuideModule();
+
+                                    // 判断是否有历史记录
+                                    if (CommonUtils.isNotEmpty(info.getData().getHistory())) {
+                                        // 有历史记录
+                                        mRootView.onLoadHistory(getOpeningRemarks(mChatUserGuideModule), info.getData().getHistory());
+                                    } else {
+                                        // 没有历史记录，单独加载 提示语
+                                        mRootView.onLoadOpeningRemarks(getOpeningRemarks(mChatUserGuideModule));
+                                    }
+
+                                } else {
+                                    mRootView.onLoadOpeningRemarks(mDefaultTips);
+                                }
+                            } catch (Exception ex) {
+                                Timber.i("##### getChatHistory error=%s", ex.getMessage());
+                                mRootView.onLoadOpeningRemarks(mDefaultTips);
+                            }
+
+                            Timber.i("##### getChatHistory------------【End】-------------");
+                        }
+                    });
+        }
     }
 
     /**
@@ -302,8 +356,14 @@ public class GeneralAssistantPresenter extends BasePresenter<GeneralAssistantCon
 
             // 流式展示
             mRootView.onLoadMessage(buffer);
-            // 语音播报
-            mRootView.onVoiceAnnouncements(buffer.toString());
+            // 语音播报，有几种情况不需要播报：
+            // 1、图片。
+            // 2、表格。
+
+            if (buffer.toString().contains("![](") || buffer.toString().contains("|-----")) {
+            } else {
+                mRootView.onVoiceAnnouncements(buffer.toString());
+            }
 
             Timber.d("onResult: %s", buffer.toString());
         } catch (Exception ignored) {

@@ -6,6 +6,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -39,6 +41,9 @@ import com.baidu.aip.asrwakeup3.uiasr.params.OnlineRecogParams;
 import com.baidu.speech.asr.SpeechConstant;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.target.Target;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -60,7 +65,6 @@ import com.zqw.mobile.easyai.mvp.contract.GeneralAssistantContract;
 import com.zqw.mobile.easyai.mvp.model.entity.ChatHistoryInfo;
 import com.zqw.mobile.easyai.mvp.presenter.GeneralAssistantPresenter;
 import com.zqw.mobile.easyai.mvp.ui.widget.AudioRecorderButton;
-import com.zqw.mobile.easyai.mvp.ui.widget.ChatStyle;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -69,9 +73,14 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import br.tiagohm.markdownview.MarkdownView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.noties.markwon.Markwon;
+import io.noties.markwon.ext.tables.TablePlugin;
+import io.noties.markwon.ext.tables.TableTheme;
+import io.noties.markwon.image.AsyncDrawable;
+import io.noties.markwon.image.glide.GlideImagesPlugin;
+import io.noties.markwon.utils.Dip;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 import timber.log.Timber;
@@ -109,7 +118,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
     ImageView imviAttachment;
 
     // 接收的消息
-    private MarkdownView txviReceiveMsg;
+    private TextView txviReceiveMsg;
     private ImageView imviReceiveMsg;
     /*--------------------------------业务信息--------------------------------*/
     @Inject
@@ -131,6 +140,8 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
     private String mVoicePath;
     // 是否自动播放语音(默认自动播放)
     private boolean isHorn = true;
+    // 渲染对象
+    private Markwon markwon;
 
     @Override
     protected void onDestroy() {
@@ -150,6 +161,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
         this.mAccountManager = null;
         this.mPopup = null;
         InFileStream.reset();
+        this.markwon = null;
     }
 
     @Override
@@ -170,6 +182,38 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setTitle("易收智能AI");
+
+        // 初始化渲染
+        final Dip dip = Dip.create(this);
+        TableTheme tableTheme = TableTheme.buildWithDefaults(this)
+                .tableCellPadding(dip.toPx(4))                                                  // 表格单元格填充
+                .tableBorderWidth(dip.toPx(1))                                                  // 表格边框宽度
+                .tableBorderColor(getResources().getColor(R.color.line_frame_color))                // 表格边框颜色
+                .tableHeaderRowBackgroundColor(Color.WHITE)                                         // 表格标题行背景颜色
+                .tableEvenRowBackgroundColor(Color.WHITE)                                           // 表偶数行背景颜色
+                .tableOddRowBackgroundColor(Color.parseColor("#f7f8fa"))                  // 表奇数行背景颜色
+                .build();
+
+        markwon = Markwon.builder(this)
+                .usePlugin(TablePlugin.create(tableTheme))                                          // 表格
+                .usePlugin(GlideImagesPlugin.create(this))                                          // 图片
+                .usePlugin(GlideImagesPlugin.create(Glide.with(this)))
+                .usePlugin(GlideImagesPlugin.create(new GlideImagesPlugin.GlideStore() {
+                    @NonNull
+                    @Override
+                    public RequestBuilder<Drawable> load(@NonNull AsyncDrawable drawable) {
+                        return Glide.with(GeneralAssistantActivity.this).load(drawable.getDestination());
+                    }
+
+                    @Override
+                    public void cancel(@NonNull Target<?> target) {
+                        try {
+                            Glide.with(GeneralAssistantActivity.this).clear(target);
+                        } catch (Exception ignored) {
+                        }
+                    }
+                }))
+                .build();
 
         // 设置API 令牌
         mAccountManager.setFastGptSk(Constant.FASTGPT_KEY);
@@ -373,14 +417,21 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
         txviReceiveMsg = viewLeftMsg.findViewById(R.id.txvi_fastgptleftlayout_chat);
         imviReceiveMsg = viewLeftMsg.findViewById(R.id.imvi_fastgptleftlayout_chat);
 
-        txviReceiveMsg.addStyleSheet(new ChatStyle());
-        txviReceiveMsg.loadMarkdown(text);
+        loadMarkwon(text);
 
         if (viewLeftMsg.getParent() != null) {
             ((ViewGroup) viewLeftMsg.getParent()).removeView(viewLeftMsg);
         }
 
         lilaChatLayout.addView(viewLeftMsg);
+    }
+
+    /**
+     * 使用 Markwon 渲染技术
+     */
+    private void loadMarkwon(String val) {
+        // 设置 Markdown 内容
+        markwon.setMarkdown(txviReceiveMsg, val);
     }
 
     /**
@@ -443,12 +494,14 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
             txviReceiveMsg.setVisibility(View.VISIBLE);
 
             // response返回拼接
-            txviReceiveMsg.loadMarkdown(info.toString());
+            loadMarkwon(info.toString());
             onSucc();
         });
     }
 
-    // 用于显示对话信息
+    /**
+     * 属性用于对话过程中显示
+     */
     private String msg = "";
 
     /**
@@ -457,6 +510,7 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
     @Override
     public void onLoadMessage(StringBuffer info) {
         msg = "";
+
         // 开启线程处理(流式展示)
         new Thread(() -> {
             for (int i = 0; i < info.length(); i++) {
@@ -470,9 +524,11 @@ public class GeneralAssistantActivity extends BaseActivity<GeneralAssistantPrese
                 getActivity().runOnUiThread(() -> {
                     imviReceiveMsg.setVisibility(View.GONE);
                     txviReceiveMsg.setVisibility(View.VISIBLE);
-                    msg = msg + mChar;
+
                     // response返回拼接
-                    txviReceiveMsg.loadMarkdown(msg);
+//                    txviReceiveMsg.append(String.valueOf(mChar));
+                    msg = msg + mChar;
+                    loadMarkwon(msg);
                     onSucc();
                 });
             }
